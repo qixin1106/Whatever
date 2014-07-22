@@ -8,6 +8,7 @@
 
 #import "RPRootVC.h"
 #import "RPStartScene.h"
+#import "RPGameScene.h"
 @interface RPRootVC ()
 
 @end
@@ -37,14 +38,15 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
-    
+    skView.showsDrawCount = YES;
+    skView.showsPhysics = YES;
+
     // Create and configure the scene.
-    RPStartScene * scene = [RPStartScene sceneWithSize:skView.bounds.size];
+    RPGameScene * scene = [RPGameScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
     [skView presentScene:scene];
-    
 }
 
 

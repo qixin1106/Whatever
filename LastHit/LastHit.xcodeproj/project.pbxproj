@@ -23,6 +23,10 @@
 		9975D68C197D5A54005971DE /* RPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D686197D5A54005971DE /* RPAppDelegate.m */; };
 		9975D68D197D5A54005971DE /* RPRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D688197D5A54005971DE /* RPRootVC.m */; };
 		9975D695197D5B79005971DE /* RPStartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D694197D5B79005971DE /* RPStartScene.m */; };
+		D2BD66AE197E07C300B95A7A /* RPCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BD66AD197E07C300B95A7A /* RPCharacter.m */; };
+		D2BD66B1197E081400B95A7A /* RPGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BD66B0197E081400B95A7A /* RPGameScene.m */; };
+		D2BD66B4197E08B500B95A7A /* RPFriendCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BD66B3197E08B500B95A7A /* RPFriendCharacter.m */; };
+		D2BD66B7197E08DA00B95A7A /* RPEnemyCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BD66B6197E08DA00B95A7A /* RPEnemyCharacter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,14 @@
 		9975D694197D5B79005971DE /* RPStartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPStartScene.m; sourceTree = "<group>"; };
 		9975D697197D5BDF005971DE /* RPMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPMacro.h; sourceTree = "<group>"; };
 		9975D698197D5C0C005971DE /* RPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPHeader.h; sourceTree = "<group>"; };
+		D2BD66AC197E07C300B95A7A /* RPCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCharacter.h; sourceTree = "<group>"; };
+		D2BD66AD197E07C300B95A7A /* RPCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCharacter.m; sourceTree = "<group>"; };
+		D2BD66AF197E081400B95A7A /* RPGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGameScene.h; sourceTree = "<group>"; };
+		D2BD66B0197E081400B95A7A /* RPGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPGameScene.m; sourceTree = "<group>"; };
+		D2BD66B2197E08B500B95A7A /* RPFriendCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPFriendCharacter.h; sourceTree = "<group>"; };
+		D2BD66B3197E08B500B95A7A /* RPFriendCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPFriendCharacter.m; sourceTree = "<group>"; };
+		D2BD66B5197E08DA00B95A7A /* RPEnemyCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPEnemyCharacter.h; sourceTree = "<group>"; };
+		D2BD66B6197E08DA00B95A7A /* RPEnemyCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPEnemyCharacter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +197,8 @@
 			children = (
 				9975D693197D5B79005971DE /* RPStartScene.h */,
 				9975D694197D5B79005971DE /* RPStartScene.m */,
+				D2BD66AF197E081400B95A7A /* RPGameScene.h */,
+				D2BD66B0197E081400B95A7A /* RPGameScene.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -203,8 +217,22 @@
 		D2BD66AA197E05AD00B95A7A /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				D2BD66AB197E07A400B95A7A /* Character */,
 			);
 			path = Object;
+			sourceTree = "<group>";
+		};
+		D2BD66AB197E07A400B95A7A /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				D2BD66AC197E07C300B95A7A /* RPCharacter.h */,
+				D2BD66AD197E07C300B95A7A /* RPCharacter.m */,
+				D2BD66B2197E08B500B95A7A /* RPFriendCharacter.h */,
+				D2BD66B3197E08B500B95A7A /* RPFriendCharacter.m */,
+				D2BD66B5197E08DA00B95A7A /* RPEnemyCharacter.h */,
+				D2BD66B6197E08DA00B95A7A /* RPEnemyCharacter.m */,
+			);
+			path = Character;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,9 +334,13 @@
 			files = (
 				9975D68D197D5A54005971DE /* RPRootVC.m in Sources */,
 				9975D68C197D5A54005971DE /* RPAppDelegate.m in Sources */,
+				D2BD66B1197E081400B95A7A /* RPGameScene.m in Sources */,
 				991A5301197D82AE003160FA /* RPComFunction.m in Sources */,
 				9975D654197D57FF005971DE /* main.m in Sources */,
+				D2BD66B7197E08DA00B95A7A /* RPEnemyCharacter.m in Sources */,
+				D2BD66B4197E08B500B95A7A /* RPFriendCharacter.m in Sources */,
 				9975D695197D5B79005971DE /* RPStartScene.m in Sources */,
+				D2BD66AE197E07C300B95A7A /* RPCharacter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

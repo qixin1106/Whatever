@@ -1,3 +1,4 @@
+/******************************************************************************/
 //TODO: 屏幕
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
@@ -21,3 +22,11 @@
 //TODO: 角度/弧度
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
 #define radianToDegrees(radian) (radian*180.0)/(M_PI)
+
+
+
+
+/******************************************************************************/
+
+#define FRIEND_NAME @"FRIEND_NAME"
+#define ENEMY_NAME @"ENEMY_NAME"
