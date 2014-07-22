@@ -37,7 +37,7 @@
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //TEST
-    //you can touch the enemy node move to change position
+    //you can touch the enemy node move to change position,just test.
     RPEnemyCharacter *e = (RPEnemyCharacter*)[self childNodeWithName:[RPEnemyCharacter getNodeName]];
     CGPoint point = [[touches anyObject] locationInNode:self];
     e.position = point;
