@@ -23,6 +23,8 @@
 		9975D68C197D5A54005971DE /* RPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D686197D5A54005971DE /* RPAppDelegate.m */; };
 		9975D68D197D5A54005971DE /* RPRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D688197D5A54005971DE /* RPRootVC.m */; };
 		9975D695197D5B79005971DE /* RPStartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D694197D5B79005971DE /* RPStartScene.m */; };
+		D27282E2197E4B8E00D17827 /* e.png in Resources */ = {isa = PBXBuildFile; fileRef = D27282E0197E4B8E00D17827 /* e.png */; };
+		D27282E3197E4B8E00D17827 /* f.png in Resources */ = {isa = PBXBuildFile; fileRef = D27282E1197E4B8E00D17827 /* f.png */; };
 		D2BD66AE197E07C300B95A7A /* RPCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BD66AD197E07C300B95A7A /* RPCharacter.m */; };
 		D2BD66B1197E081400B95A7A /* RPGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BD66B0197E081400B95A7A /* RPGameScene.m */; };
 		D2BD66B4197E08B500B95A7A /* RPFriendCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BD66B3197E08B500B95A7A /* RPFriendCharacter.m */; };
@@ -65,6 +67,8 @@
 		9975D694197D5B79005971DE /* RPStartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPStartScene.m; sourceTree = "<group>"; };
 		9975D697197D5BDF005971DE /* RPMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPMacro.h; sourceTree = "<group>"; };
 		9975D698197D5C0C005971DE /* RPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPHeader.h; sourceTree = "<group>"; };
+		D27282E0197E4B8E00D17827 /* e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e.png; sourceTree = "<group>"; };
+		D27282E1197E4B8E00D17827 /* f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f.png; sourceTree = "<group>"; };
 		D2BD66AC197E07C300B95A7A /* RPCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCharacter.h; sourceTree = "<group>"; };
 		D2BD66AD197E07C300B95A7A /* RPCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCharacter.m; sourceTree = "<group>"; };
 		D2BD66AF197E081400B95A7A /* RPGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGameScene.h; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 		9975D64D197D57FF005971DE /* LastHit */ = {
 			isa = PBXGroup;
 			children = (
+				D27282DC197E4B7600D17827 /* Resource */,
 				9975D696197D5BD1005971DE /* Common */,
 				9975D684197D5A54005971DE /* Class */,
 				9975D689197D5A54005971DE /* Node */,
@@ -212,6 +217,39 @@
 				991A5300197D82AE003160FA /* RPComFunction.m */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		D27282DC197E4B7600D17827 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D27282DD197E4B7600D17827 /* Image */,
+				D27282DE197E4B7600D17827 /* Particle */,
+				D27282DF197E4B7600D17827 /* Sound */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D27282DD197E4B7600D17827 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				D27282E0197E4B8E00D17827 /* e.png */,
+				D27282E1197E4B8E00D17827 /* f.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		D27282DE197E4B7600D17827 /* Particle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Particle;
+			sourceTree = "<group>";
+		};
+		D27282DF197E4B7600D17827 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 		D2BD66AA197E05AD00B95A7A /* Object */ = {
@@ -312,7 +350,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27282E2197E4B8E00D17827 /* e.png in Resources */,
 				9975D652197D57FF005971DE /* InfoPlist.strings in Resources */,
+				D27282E3197E4B8E00D17827 /* f.png in Resources */,
 				9975D665197D57FF005971DE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

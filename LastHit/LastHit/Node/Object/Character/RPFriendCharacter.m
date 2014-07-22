@@ -15,15 +15,19 @@
     return FRIEND_NAME;
 }
 
-- (instancetype)initWithColor:(UIColor *)color size:(CGSize)size
+- (instancetype)init
 {
-    self = [super initWithColor:color size:size];
+    self = [super initWithImageNamed:@"f.png"];
     if (self)
     {
+        self.size = CGSizeMake(50, 50);
         self.name = FRIEND_NAME;
+        self.state = States_Move;
         self.lastTime = 0;
         self.atkInterval = 1.2;
-        self.atkRange = 200;
+        self.viewRange = 320;
+        self.atkRange = 100;
+        self.moveSpeed = 50;
     }
     return self;
 }

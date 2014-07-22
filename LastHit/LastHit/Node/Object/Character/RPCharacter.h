@@ -23,10 +23,10 @@ typedef enum{
 
 @property (assign, nonatomic) CGFloat atkRange;
 @property (assign, nonatomic) CGFloat viewRange;
+@property (assign, nonatomic) CGFloat moveSpeed;
 
 @property (assign, nonatomic) States state;
 @property (weak, nonatomic) RPCharacter *target;
-
 
 + (NSString*)getNodeName;
 

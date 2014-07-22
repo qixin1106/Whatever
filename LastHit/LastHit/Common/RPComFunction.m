@@ -22,7 +22,7 @@
 + (CGFloat)getRadianWithYourPosition:(CGPoint)your
                     targetPosition:(CGPoint)target
 {
-    return atan2((target.y-your.y), (target.x-your.x));
+    return atan2((target.y-your.y), (target.x-your.x))-M_PI_2;
 }
 
 @end

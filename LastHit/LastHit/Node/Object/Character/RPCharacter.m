@@ -11,23 +11,18 @@
 
 @implementation RPCharacter
 
+#pragma mark - Update
 - (void)update:(CFTimeInterval)currentTime
 {
     if (currentTime-self.lastTime>self.atkInterval)
     {
         //fire
-        if (self.state == States_Atk && self.target)
-        {
-            SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(3, 3)];
-            bullet.position = self.position;
-            [self.parent addChild:bullet];
-
-            SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
-            SKAction *remove = [SKAction removeFromParent];
-            [bullet runAction:[SKAction sequence:@[move,remove]]];
-        }
+        [self attackTarget];
         self.lastTime = currentTime;
     }
+    self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
+                                               targetPosition:self.target.position];
+    [self moveToTarget];
 }
 
 
@@ -48,15 +43,24 @@
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                      targetPosition:character.position];
         //NSLog(@"distance:%f",distance);
-        if (distance<=self.atkRange)
+        if (distance<=self.viewRange)
         {
-            //Can fire
-            self.state = States_Atk;
+            //discover target
             self.target = character;
+            if (distance<=self.atkRange)
+            {
+                //can attack
+                self.state = States_Atk;
+            }
+            else
+            {
+                //can move to target
+                self.state = States_Move;
+            }
         }
         else
         {
-            //Can't fire
+            //Can't attack
             self.state = States_Move;
             self.target = nil;
         }
@@ -66,13 +70,29 @@
 
 - (void)moveToTarget
 {
-
+    if (self.state == States_Move && self.target)
+    {
+        CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
+                                                       targetPosition:self.target.position];
+        //[self removeActionForKey:@"Move"];
+        SKAction *run = [SKAction moveTo:self.target.position duration:distance/self.moveSpeed];
+        [self runAction:run];
+    }
 }
 
 
 - (void)attackTarget
 {
+    if (self.state == States_Atk && self.target)
+    {
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(3, 3)];
+        bullet.position = self.position;
+        [self.parent addChild:bullet];
 
+        SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
+        SKAction *remove = [SKAction removeFromParent];
+        [bullet runAction:[SKAction sequence:@[move,remove]]];
+    }
 }
 @end
 

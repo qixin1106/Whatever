@@ -16,15 +16,20 @@
 }
 
 
-- (instancetype)initWithColor:(UIColor *)color size:(CGSize)size
+
+- (instancetype)init
 {
-    self = [super initWithColor:color size:size];
+    self = [super initWithImageNamed:@"e.png"];
     if (self)
     {
+        self.size = CGSizeMake(50, 50);
         self.name = ENEMY_NAME;
+        self.state = States_Move;
         self.lastTime = 0;
+        self.viewRange = 320;
         self.atkInterval = 1.2;
         self.atkRange = 50;
+        self.moveSpeed = 2;
     }
     return self;
 }

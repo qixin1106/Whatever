@@ -20,13 +20,11 @@
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
 
         //Test
-        RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithColor:[UIColor greenColor]
-                                                                        size:CGSizeMake(50, 50)];
+        RPFriendCharacter *friend = [[RPFriendCharacter alloc] init];
         friend.position = CGPointMake(100, 100);
         [self addChild:friend];
 
-        RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithColor:[UIColor redColor]
-                                                                     size:CGSizeMake(50, 50)];
+        RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] init];
         enemy.position = CGPointMake(100, 350);
         [self addChild:enemy];
 
@@ -39,11 +37,10 @@
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //TEST
+    //you can touch the enemy node move to change position
     RPEnemyCharacter *e = (RPEnemyCharacter*)[self childNodeWithName:[RPEnemyCharacter getNodeName]];
     CGPoint point = [[touches anyObject] locationInNode:self];
     e.position = point;
-    RPFriendCharacter *f = (RPFriendCharacter*)[self childNodeWithName:[RPFriendCharacter getNodeName]];
-    NSLog(@"%f",[RPComFunction getRadianWithYourPosition:f.position targetPosition:e.position]);
 }
 
 #pragma mark - Update
