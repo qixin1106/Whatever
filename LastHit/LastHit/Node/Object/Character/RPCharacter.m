@@ -39,20 +39,15 @@
 }
 
 
-- (float)getDistanceWithCharacter:(RPCharacter*)character
-{
-    float absWidth = abs(character.position.x)-abs(self.position.x);
-    float absHeight = abs(character.position.y)-abs(self.position.y);
-    return sqrtf(absWidth*absWidth+absHeight*absHeight);
-}
 
 
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene
 {
     [scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
-        float distance = [self getDistanceWithCharacter:character];
-        //NSLog(@"e:%f",distance);
+        float distance = [RPComFunction getDistanceWithYourPosition:self.position
+                                                     targetPosition:character.position];
+        //NSLog(@"distance:%f",distance);
         if (distance<=self.atkRange)
         {
             //Can fire
@@ -62,10 +57,22 @@
         else
         {
             //Can't fire
-            self.state = States_Stop;
+            self.state = States_Move;
             self.target = nil;
         }
     }];
+}
+
+
+- (void)moveToTarget
+{
+
+}
+
+
+- (void)attackTarget
+{
+
 }
 @end
 
