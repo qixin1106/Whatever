@@ -45,7 +45,7 @@
 {
     [scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
-        float distance = [RPComFunction getDistanceWithYourPosition:self.position
+        CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                      targetPosition:character.position];
         //NSLog(@"distance:%f",distance);
         if (distance<=self.atkRange)

@@ -21,8 +21,8 @@ typedef enum{
 @property (assign, nonatomic) NSTimeInterval lastTime;
 @property (assign, nonatomic) NSTimeInterval atkInterval;
 
-@property (assign, nonatomic) float atkRange;
-@property (assign, nonatomic) float viewRange;
+@property (assign, nonatomic) CGFloat atkRange;
+@property (assign, nonatomic) CGFloat viewRange;
 
 @property (assign, nonatomic) States state;
 @property (weak, nonatomic) RPCharacter *target;

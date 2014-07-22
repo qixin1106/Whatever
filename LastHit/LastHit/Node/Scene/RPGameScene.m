@@ -29,6 +29,7 @@
                                                                      size:CGSizeMake(50, 50)];
         enemy.position = CGPointMake(100, 350);
         [self addChild:enemy];
+
     }
     return self;
 }
@@ -41,6 +42,8 @@
     RPEnemyCharacter *e = (RPEnemyCharacter*)[self childNodeWithName:[RPEnemyCharacter getNodeName]];
     CGPoint point = [[touches anyObject] locationInNode:self];
     e.position = point;
+    RPFriendCharacter *f = (RPFriendCharacter*)[self childNodeWithName:[RPFriendCharacter getNodeName]];
+    NSLog(@"%f",[RPComFunction getRadianWithYourPosition:f.position targetPosition:e.position]);
 }
 
 #pragma mark - Update

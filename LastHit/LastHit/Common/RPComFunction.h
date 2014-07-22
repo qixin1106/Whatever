@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface RPComFunction : NSObject
-+ (float)getDistanceWithYourPosition:(CGPoint)your
++ (CGFloat)getDistanceWithYourPosition:(CGPoint)your
                       targetPosition:(CGPoint)target;
++ (CGFloat)getRadianWithYourPosition:(CGPoint)your
+                    targetPosition:(CGPoint)target;
 @end
