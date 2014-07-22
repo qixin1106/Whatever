@@ -10,4 +10,13 @@
 
 @implementation RPComFunction
 
++ (float)getDistanceWithYourPosition:(CGPoint)your
+                      targetPosition:(CGPoint)target
+{
+    float absWidth = abs(your.x)-abs(target.x);
+    float absHeight = abs(your.y)-abs(target.y);
+    return sqrtf(absWidth*absWidth+absHeight*absHeight);
+}
+
+
 @end
