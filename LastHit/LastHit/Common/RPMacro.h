@@ -9,7 +9,7 @@
 
 //TODO: Log
 #ifdef DEBUG
-#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define NSLog(fmt, ...) NSLog((@"%s\n[Line %d]\n" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
 #define NSLog(...)
 #endif
