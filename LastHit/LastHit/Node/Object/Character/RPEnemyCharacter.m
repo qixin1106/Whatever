@@ -26,10 +26,16 @@
         self.name = ENEMY_NAME;
         self.state = States_Move;
         self.lastTime = 0;
-        self.viewRange = 320;
         self.atkInterval = 1.2;
+        self.viewRange = 200;
         self.atkRange = 50;
-        self.moveSpeed = 2;
+        self.moveSpeed = 30;
+        
+#ifdef DEBUG
+        [self showViewRangeLine];
+        [self showAtkRangeLine];
+#endif
+
     }
     return self;
 }

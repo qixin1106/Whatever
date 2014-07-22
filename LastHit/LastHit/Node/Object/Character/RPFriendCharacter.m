@@ -25,8 +25,8 @@
         self.state = States_Move;
         self.lastTime = 0;
         self.atkInterval = 1.2;
-        self.viewRange = 200;
-        self.atkRange = 100;
+        self.viewRange = 150;
+        self.atkRange = 50;
         self.moveSpeed = 50;
 
 #ifdef DEBUG

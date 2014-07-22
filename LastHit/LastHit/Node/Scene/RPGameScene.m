@@ -59,6 +59,7 @@
         {
             RPEnemyCharacter *e = (RPEnemyCharacter*)node;
             [e update:currentTime];
+            [e findTargetWithName:[RPFriendCharacter getNodeName] scene:self];
         }
     }];
 

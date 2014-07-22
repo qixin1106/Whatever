@@ -18,6 +18,7 @@ typedef enum{
 }States;
 
 @interface RPCharacter : RPBaseObjNode
+@property (assign, nonatomic) NSTimeInterval curTime;
 @property (assign, nonatomic) NSTimeInterval lastTime;
 @property (assign, nonatomic) NSTimeInterval atkInterval;
 

@@ -14,6 +14,7 @@
 #pragma mark - Update
 - (void)update:(CFTimeInterval)currentTime
 {
+    self.curTime = currentTime;
     if (currentTime-self.lastTime>self.atkInterval)
     {
         //fire
@@ -74,9 +75,13 @@
     {
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                        targetPosition:self.target.position];
-        //[self removeActionForKey:@"Move"];
         SKAction *run = [SKAction moveTo:self.target.position duration:distance/self.moveSpeed];
+        
         [self runAction:run];
+    }
+    if (self.state != States_Move)
+    {
+        [self removeAllActions];
     }
 }
 
@@ -96,6 +101,56 @@
 }
 
 
+
+- (void)setState:(States)state
+{
+    if (_state!=state)
+    {
+        _state=state;
+        switch (_state)
+        {
+            case States_Atk:
+            {
+                //Instantly attacks
+                //self.lastTime = self.curTime;
+                break;
+            }
+            case States_Dead:
+            {
+                break;
+            }
+            case States_Move:
+            {
+                break;
+            }
+            case States_Stop:
+            {
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
+
+- (void)setTarget:(RPCharacter *)target
+{
+    if (_target!=target)
+    {
+        _target=target;
+        if (_target==nil)
+        {
+            [self removeAllActions];
+        }
+    }
+}
+
+
+
+
+
+#pragma mark - Debug
 - (void)showViewRangeLine
 {
     SKShapeNode *viewRangeLine = [SKShapeNode node];
