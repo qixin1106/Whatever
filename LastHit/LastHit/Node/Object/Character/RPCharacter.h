@@ -33,4 +33,6 @@ typedef enum{
 - (void)update:(CFTimeInterval)currentTime;
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene;
 
+- (void)showViewRangeLine;
+- (void)showAtkRangeLine;
 @end

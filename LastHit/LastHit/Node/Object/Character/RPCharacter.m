@@ -85,7 +85,7 @@
 {
     if (self.state == States_Atk && self.target)
     {
-        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(3, 3)];
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(10, 10)];
         bullet.position = self.position;
         [self.parent addChild:bullet];
 
@@ -93,6 +93,37 @@
         SKAction *remove = [SKAction removeFromParent];
         [bullet runAction:[SKAction sequence:@[move,remove]]];
     }
+}
+
+
+- (void)showViewRangeLine
+{
+    SKShapeNode *viewRangeLine = [SKShapeNode node];
+    viewRangeLine.strokeColor = RGB(0, 0, 0);
+    viewRangeLine.lineWidth = 1.0f;
+
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0)
+                                                            radius:self.viewRange
+                                                        startAngle:M_PI
+                                                          endAngle:-M_PI
+                                                         clockwise:YES];
+    viewRangeLine.path = ovalPath.CGPath;
+    [self addChild:viewRangeLine];
+}
+
+- (void)showAtkRangeLine
+{
+    SKShapeNode *viewRangeLine = [SKShapeNode node];
+    viewRangeLine.strokeColor = RGB(255, 0, 0);
+    viewRangeLine.lineWidth = 1.0f;
+
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0)
+                                                            radius:self.atkRange
+                                                        startAngle:M_PI
+                                                          endAngle:-M_PI
+                                                         clockwise:YES];
+    viewRangeLine.path = ovalPath.CGPath;
+    [self addChild:viewRangeLine];
 }
 @end
 

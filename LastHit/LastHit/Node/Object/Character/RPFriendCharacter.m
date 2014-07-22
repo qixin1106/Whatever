@@ -25,11 +25,17 @@
         self.state = States_Move;
         self.lastTime = 0;
         self.atkInterval = 1.2;
-        self.viewRange = 320;
+        self.viewRange = 200;
         self.atkRange = 100;
         self.moveSpeed = 50;
+
+#ifdef DEBUG
+        [self showViewRangeLine];
+        [self showAtkRangeLine];
+#endif
     }
     return self;
 }
+
 
 @end
