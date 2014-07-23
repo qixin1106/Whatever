@@ -14,25 +14,26 @@
 
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene
 {
-    [scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
-        RPCharacter *character = (RPCharacter*)node;
-        CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
-                                                       targetPosition:character.position];
-        if (distance<=self.viewRange)
-        {
-            if (self.target==nil)
+    if (!self.target)
+    {
+        [scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
+            RPCharacter *character = (RPCharacter*)node;
+            CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
+                                                           targetPosition:character.position];
+            if (distance<=self.viewRange)
             {
-                //discover target
+                    //discover target
                 [self changeTarget:character];
+                return;
             }
-        }
-        else
-        {
-            //Can't attack
-            [self changeState:States_Move];
-            [self changeTarget:nil];
-        }
-    }];
+            else
+            {
+                //Can't attack
+                [self changeState:States_Move];
+                [self changeTarget:nil];
+            }
+        }];
+    }
 }
 
 
@@ -70,13 +71,90 @@
 
 
 #pragma mark - The subclass implementation
-#warning 这里的方法是子类必须实现的
-- (void)update:(CFTimeInterval)currentTime scene:(RPGameScene *)scene{}
 + (NSString*)getNodeName{return nil;}
-- (void)changeState:(States)state{}
-- (void)changeTarget:(RPCharacter *)target{}
-- (void)changeCurHp:(CGFloat)curHp byObj:(RPCharacter*)sender{}
 - (void)attackTarget{}
+
+
+
+#pragma mark -
+- (void)changeState:(States)state
+{
+    if (self.state!=state)
+    {
+        self.state=state;
+        switch (self.state)
+        {
+            case States_Atk:
+            {
+                NSLog(@"[%@]呕哼~~(豺狼人)",self.name);
+                break;
+            }
+            case States_Dead:
+            {
+                NSLog(@"[%@]祖国万岁",self.name);
+                self.target = nil;
+                [self removeAllActions];
+                [self removeFromParent];
+                break;
+            }
+            case States_Move:
+            {
+                NSLog(@"[%@]为了部落",self.name);
+                break;
+            }
+            case States_Stop:
+            {
+                NSLog(@"[%@]Stop",self.name);
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
+
+#pragma mark - Change target
+- (void)changeTarget:(RPCharacter *)target
+{
+    if (self.target != target)
+    {
+        self.target = target;
+        //Miss target
+        if (!self.target)
+        {
+            [self removeAllActions];
+        }
+        else
+        {
+            //Find a Target
+            //NSLog(@"Fresh meat,Hahaha!");
+        }
+    }
+}
+
+
+#pragma mark - Change HP
+- (void)changeCurHp:(CGFloat)curHp byObj:(RPCharacter *)sender
+{
+    if (self.curHp != curHp && self.curHp>0)
+    {
+        self.curHp = (curHp<0)?0:curHp;
+        NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.name,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
+        if (![RPComFunction isHpSafe:self])
+        {
+            NSLog(@"要死了,要死了,要死了");
+        }
+        if (self.curHp<=0)
+        {
+            //Dead
+            [self changeState:States_Dead];
+            //change sender state
+            [sender changeTarget:nil];
+            [sender changeState:States_Move];
+        }
+    }
+}
 
 
 

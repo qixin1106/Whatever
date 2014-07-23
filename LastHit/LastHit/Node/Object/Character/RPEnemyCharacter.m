@@ -16,13 +16,17 @@
     return ENEMY_NAME;
 }
 
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)init
 {
     self = [super initWithImageNamed:@"e.png"];
     if (self)
     {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
         self.size = CGSizeMake(50, 50);
         self.name = ENEMY_NAME;
         self.state = States_Move;
@@ -51,12 +55,14 @@
 
 
 
-
-#pragma mark -----Override------
-- (void)update:(CFTimeInterval)currentTime scene:(RPGameScene *)scene
+#pragma mark - Update
+- (void)updateNode:(NSNotification*)notification
 {
+    RPGameScene *scene = [notification.userInfo objectForKey:@"kScene"];
+    NSTimeInterval currentTime = [[notification.userInfo objectForKey:@"kTime"] doubleValue];
+    
     [self findTargetWithName:[RPFriendCharacter getNodeName] scene:scene];
-
+    
     //contrl atk
     if (currentTime-self.lastTime>self.atkInterval)
     {
@@ -72,88 +78,11 @@
     }
     //move
     [self moveToTarget];
+    
 }
 
 
-#pragma mark - Change states
-- (void)changeState:(States)state
-{
-    if (self.state!=state)
-    {
-        self.state=state;
-        switch (self.state)
-        {
-            case States_Atk:
-            {
-                //NSLog(@"为了部落!!");
-                break;
-            }
-            case States_Dead:
-            {
-                NSLog(@"祖国万岁!!");
-                break;
-            }
-            case States_Move:
-            {
-                //NSLog(@"力量与荣耀!");
-                break;
-            }
-            case States_Stop:
-            {
-                //NSLog(@"Stop");
-                break;
-            }
-            default:
-                break;
-        }
-    }
-}
-
-
-#pragma mark - Change target
-- (void)changeTarget:(RPCharacter *)target
-{
-    if (self.target != target)
-    {
-        self.target = target;
-        //Miss target
-        if (!self.target)
-        {
-            [self removeAllActions];
-        }
-        else
-        {
-            //Find a Target
-            //NSLog(@"兄弟们搞死他!");
-        }
-    }
-}
-
-
-#pragma mark - Change HP
-- (void)changeCurHp:(CGFloat)curHp byObj:(RPCharacter *)sender
-{
-    if (self.curHp != curHp && self.curHp>0)
-    {
-        self.curHp = (curHp<0)?0:curHp;
-        NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.name,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
-        if (![RPComFunction isHpSafe:self])
-        {
-            NSLog(@"锁哥强!");
-        }
-        if (self.curHp<=0)
-        {
-            //Dead
-            [self changeState:States_Dead];
-            [self removeAllActions];
-            [self removeFromParent];
-            //change sender state
-            [sender changeState:States_Move];
-        }
-    }
-}
-
-
+#pragma mark -----Override------
 - (void)attackTarget
 {
     if (self.state == States_Atk && self.target)

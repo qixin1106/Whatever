@@ -37,7 +37,6 @@ typedef enum{
 
 + (NSString*)getNodeName;
 
-- (void)update:(CFTimeInterval)currentTime scene:(RPGameScene*)scene;
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene;
 - (void)moveToTarget;
 

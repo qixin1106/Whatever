@@ -30,3 +30,6 @@
 
 #define FRIEND_NAME @"FRIEND_NAME"
 #define ENEMY_NAME @"ENEMY_NAME"
+
+#define UPDATE_MSG @"UPDATE_MSG"
+

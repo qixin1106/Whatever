@@ -63,21 +63,9 @@
 #pragma mark - Update
 - (void)update:(NSTimeInterval)currentTime
 {
-    [self enumerateChildNodesWithName:[RPFriendCharacter getNodeName] usingBlock:^(SKNode *node, BOOL *stop) {
-        if ([node isKindOfClass:[RPFriendCharacter class]])
-        {
-            RPFriendCharacter *f = (RPFriendCharacter*)node;
-            [f update:currentTime scene:self];
-        }
-    }];
-    [self enumerateChildNodesWithName:[RPEnemyCharacter getNodeName] usingBlock:^(SKNode *node, BOOL *stop) {
-        if ([node isKindOfClass:[RPEnemyCharacter class]])
-        {
-            RPEnemyCharacter *e = (RPEnemyCharacter*)node;
-            [e update:currentTime scene:self];
-        }
-    }];
-
+    NSDictionary *userInfo = @{@"kScene": self,
+                               @"kTime":[NSNumber numberWithDouble:currentTime]};
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_MSG object:nil userInfo:userInfo];
 }
 
 @end
