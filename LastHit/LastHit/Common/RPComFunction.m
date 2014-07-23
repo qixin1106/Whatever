@@ -25,4 +25,10 @@
     return atan2((target.y-your.y), (target.x-your.x))-M_PI_2;
 }
 
+
++ (CGFloat)getCurAtkWithMax:(CGFloat)maxAtk Min:(CGFloat)minAtk
+{
+    return (rand()%((NSInteger)maxAtk-(NSInteger)minAtk))+minAtk;
+}
+
 @end

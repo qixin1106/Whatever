@@ -13,4 +13,5 @@
                       targetPosition:(CGPoint)target;
 + (CGFloat)getRadianWithYourPosition:(CGPoint)your
                     targetPosition:(CGPoint)target;
++ (CGFloat)getCurAtkWithMax:(CGFloat)maxAtk Min:(CGFloat)minAtk;
 @end

@@ -14,7 +14,6 @@
 #pragma mark - Update
 - (void)update:(CFTimeInterval)currentTime
 {
-    self.curTime = currentTime;
     if (currentTime-self.lastTime>self.atkInterval)
     {
         //fire
@@ -28,7 +27,7 @@
 
 
 
-#pragma mark - base function
+#pragma mark - Base function
 + (NSString*)getNodeName
 {
     return nil;
@@ -43,7 +42,6 @@
         RPCharacter *character = (RPCharacter*)node;
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                      targetPosition:character.position];
-        //NSLog(@"distance:%f",distance);
         if (distance<=self.viewRange)
         {
             //discover target
@@ -102,6 +100,7 @@
 
 
 
+#pragma mark - Change states
 - (void)setState:(States)state
 {
     if (_state!=state)
@@ -111,8 +110,6 @@
         {
             case States_Atk:
             {
-                //Instantly attacks
-                //self.lastTime = self.curTime;
                 break;
             }
             case States_Dead:
@@ -134,14 +131,20 @@
 }
 
 
+#pragma mark - Change target
 - (void)setTarget:(RPCharacter *)target
 {
-    if (_target!=target)
+    if (_target != target)
     {
-        _target=target;
-        if (_target==nil)
+        _target = target;
+        //Miss target
+        if (!_target)
         {
             [self removeAllActions];
+        }
+        else
+        {
+            NSLog(@"德马西亚!!!");
         }
     }
 }

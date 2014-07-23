@@ -24,10 +24,15 @@
         self.name = FRIEND_NAME;
         self.state = States_Move;
         self.lastTime = 0;
-        self.atkInterval = 1.2;
+        self.atkInterval = 1.0;
         self.viewRange = 150;
         self.atkRange = 50;
         self.moveSpeed = 50;
+
+        self.hp = 500;
+        self.maxAtk = 23;
+        self.minAtk = 19;
+        self.armor = 2;
 
 #ifdef DEBUG
         [self showViewRangeLine];
