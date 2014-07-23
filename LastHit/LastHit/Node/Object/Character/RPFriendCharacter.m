@@ -27,7 +27,7 @@
         self.lastTime = 0;
 
         self.atkInterval = 0.5;
-        self.viewRange = 150;
+        self.viewRange = 200;
         self.atkRange = 150;
         self.moveSpeed = 50;
         self.maxHp = 500;

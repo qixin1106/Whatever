@@ -30,11 +30,6 @@
 
 
 
-#pragma mark - Base function
-+ (NSString*)getNodeName
-{
-    return nil;
-}
 
 
 
@@ -115,6 +110,7 @@
 
 
 #pragma mark - The subclass implementation
++ (NSString*)getNodeName{return nil;}
 - (void)changeState:(States)state{}
 - (void)changeTarget:(RPCharacter *)target{}
 - (void)changeCurHp:(CGFloat)curHp{}
