@@ -222,6 +222,13 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		D251CE22197F9CD6000B85AF /* Building */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Building;
+			sourceTree = "<group>";
+		};
 		D27282DC197E4B7600D17827 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +267,7 @@
 			children = (
 				D27282E4197E6E9800D17827 /* RPBaseObjNode.h */,
 				D27282E5197E6E9800D17827 /* RPBaseObjNode.m */,
+				D251CE22197F9CD6000B85AF /* Building */,
 				D2BD66AB197E07A400B95A7A /* Character */,
 			);
 			path = Object;
