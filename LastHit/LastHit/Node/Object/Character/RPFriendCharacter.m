@@ -43,10 +43,8 @@
         self.minAtk = 25;
         self.armor = 2;
 
-#ifdef DEBUG
         [self showViewRangeLine];
         [self showAtkRangeLine];
-#endif
     }
     return self;
 }
@@ -87,7 +85,7 @@
     if (self.state == States_Atk && self.target)
     {
         //override attack effect here...
-        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(10, 10)];
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(10, 10)];
         bullet.position = self.position;
         [self.parent addChild:bullet];
 

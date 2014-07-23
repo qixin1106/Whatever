@@ -44,11 +44,8 @@
         self.minAtk = 19;
         self.armor = 2;
 
-#ifdef DEBUG
         [self showViewRangeLine];
         [self showAtkRangeLine];
-#endif
-
     }
     return self;
 }

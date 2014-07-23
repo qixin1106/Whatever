@@ -11,7 +11,15 @@
 
 @implementation RPCharacter
 
-
+#pragma mark - Find target
+/*!
+ *  寻找视野内的目标,update每次都会调用
+ *
+ *  @param name  目标的name
+ *  @param scene 游戏场景,用来遍历
+ *
+ *  @since 1.0
+ */
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene
 {
     if (!self.target)
@@ -37,7 +45,12 @@
 }
 
 
-
+#pragma mark - Move
+/*!
+ *  像目标移动,如果目标存在并且角色状态是Move
+ *
+ *  @since 1.0
+ */
 - (void)moveToTarget
 {
     if (self.state == States_Move && self.target)
@@ -71,12 +84,25 @@
 
 
 #pragma mark - The subclass implementation
+/*!
+ *  子类节点的名字,用来做目标遍历查找
+ *
+ *  @return 节点名字
+ *
+ *  @since 1.0
+ */
 + (NSString*)getNodeName{return nil;}
-- (void)attackTarget{}
 
 
 
-#pragma mark -
+#pragma mark - Change state
+/*!
+ *  改变状态
+ *
+ *  @param state 状态枚举,请在头文件查看
+ *
+ *  @since 1.0
+ */
 - (void)changeState:(States)state
 {
     if (self.state!=state)
@@ -115,6 +141,13 @@
 
 
 #pragma mark - Change target
+/*!
+ *  改变目标
+ *
+ *  @param target 目标对象,如果赋值nil则视为丢失目标
+ *
+ *  @since 1.0
+ */
 - (void)changeTarget:(RPCharacter *)target
 {
     if (self.target != target)
@@ -135,6 +168,14 @@
 
 
 #pragma mark - Change HP
+/*!
+ *  改变血量,并判断自身血量是否低于0(死亡)
+ *
+ *  @param curHp  改变后的血量,并非是伤害量,这个值将直接覆盖当前血量
+ *  @param sender 攻击者对象(以后可能会有治疗,暂时忽略)
+ *
+ *  @since 1.0
+ */
 - (void)changeCurHp:(CGFloat)curHp byObj:(RPCharacter *)sender
 {
     if (self.curHp != curHp && self.curHp>0)
@@ -159,8 +200,14 @@
 
 
 #pragma mark - Debug
+/*!
+ *  Debug用显示视野范围
+ *
+ *  @since 1.0
+ */
 - (void)showViewRangeLine
 {
+#ifdef DEBUG
     SKShapeNode *viewRangeLine = [SKShapeNode node];
     viewRangeLine.strokeColor = RGB(0, 0, 0);
     viewRangeLine.lineWidth = 1.0f;
@@ -172,10 +219,12 @@
                                                          clockwise:YES];
     viewRangeLine.path = ovalPath.CGPath;
     [self addChild:viewRangeLine];
+#endif
 }
 
 - (void)showAtkRangeLine
 {
+#ifdef DEBUG
     SKShapeNode *viewRangeLine = [SKShapeNode node];
     viewRangeLine.strokeColor = RGB(255, 0, 0);
     viewRangeLine.lineWidth = 1.0f;
@@ -187,6 +236,7 @@
                                                          clockwise:YES];
     viewRangeLine.path = ovalPath.CGPath;
     [self addChild:viewRangeLine];
+#endif
 }
 @end
 
