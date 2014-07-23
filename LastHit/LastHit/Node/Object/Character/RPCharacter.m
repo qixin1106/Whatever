@@ -143,7 +143,7 @@
         NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.name,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
         if (![RPComFunction isHpSafe:self])
         {
-            NSLog(@"要死了,要死了,要死了");
+            NSLog(@"[%@]要死了,要死了,要死了",self.name);
         }
         if (self.curHp<=0)
         {
