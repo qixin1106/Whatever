@@ -19,8 +19,8 @@ typedef enum{
 
 @interface RPCharacter : RPBaseObjNode
 @property (assign, nonatomic) NSTimeInterval lastTime;
-@property (assign, nonatomic) NSTimeInterval atkInterval;
 
+@property (assign, nonatomic) NSTimeInterval atkInterval;
 @property (assign, nonatomic) CGFloat atkRange;
 @property (assign, nonatomic) CGFloat viewRange;
 @property (assign, nonatomic) CGFloat moveSpeed;

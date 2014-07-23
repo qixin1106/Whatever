@@ -25,15 +25,15 @@
         self.name = FRIEND_NAME;
         self.state = States_Move;
         self.lastTime = 0;
-        self.atkInterval = 1.0;
-        self.viewRange = 150;
-        self.atkRange = 50;
-        self.moveSpeed = 50;
 
+        self.atkInterval = 0.5;
+        self.viewRange = 150;
+        self.atkRange = 150;
+        self.moveSpeed = 50;
         self.maxHp = 500;
         self.curHp = self.maxHp;
-        self.maxAtk = 23;
-        self.minAtk = 19;
+        self.maxAtk = 32;
+        self.minAtk = 25;
         self.armor = 2;
 
 #ifdef DEBUG
@@ -56,7 +56,7 @@
         {
             case States_Atk:
             {
-                NSLog(@"呕哼~~");
+                NSLog(@"呕哼~~(豺狼人)");
                 break;
             }
             case States_Dead:
