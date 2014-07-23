@@ -17,6 +17,7 @@ typedef enum{
     States_Dead=3
 }States;
 
+
 @interface RPCharacter : RPBaseObjNode
 @property (assign, nonatomic) NSTimeInterval lastTime;
 
@@ -36,13 +37,15 @@ typedef enum{
 
 + (NSString*)getNodeName;
 
-- (void)update:(CFTimeInterval)currentTime;
+- (void)update:(CFTimeInterval)currentTime scene:(RPGameScene*)scene;
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene;
+- (void)moveToTarget;
 
 - (void)changeState:(States)state;
 - (void)changeTarget:(RPCharacter *)target;
-- (void)changeCurHp:(CGFloat)curHp;
+- (void)changeCurHp:(CGFloat)curHp byObj:(RPCharacter*)sender;
 
 - (void)showViewRangeLine;
 - (void)showAtkRangeLine;
 @end
+

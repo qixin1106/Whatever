@@ -39,7 +39,7 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     skView.showsDrawCount = YES;
-    skView.showsPhysics = YES;
+//    skView.showsPhysics = YES;
 
     // Create and configure the scene.
     RPGameScene * scene = [RPGameScene sceneWithSize:skView.bounds.size];

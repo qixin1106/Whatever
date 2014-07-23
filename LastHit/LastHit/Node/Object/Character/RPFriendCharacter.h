@@ -9,5 +9,4 @@
 #import "RPCharacter.h"
 
 @interface RPFriendCharacter : RPCharacter
-
 @end

@@ -11,28 +11,6 @@
 
 @implementation RPCharacter
 
-#pragma mark - Update
-- (void)update:(CFTimeInterval)currentTime
-{
-    if (currentTime-self.lastTime>self.atkInterval)
-    {
-        //fire
-        [self attackTarget];
-        self.lastTime = currentTime;
-    }
-    if (self.target)
-    {
-        self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
-                                                   targetPosition:self.target.position];
-    }
-    [self moveToTarget];
-}
-
-
-
-
-
-
 
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene
 {
@@ -47,16 +25,6 @@
                 //discover target
                 [self changeTarget:character];
             }
-            if (distance<=self.atkRange)
-            {
-                //can attack
-                [self changeState:States_Atk];
-            }
-            else
-            {
-                //can move to target
-                [self changeState:States_Move];
-            }
         }
         else
         {
@@ -68,6 +36,7 @@
 }
 
 
+
 - (void)moveToTarget
 {
     if (self.state == States_Move && self.target)
@@ -75,8 +44,18 @@
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                        targetPosition:self.target.position];
         SKAction *run = [SKAction moveTo:self.target.position duration:distance/self.moveSpeed];
-
         [self runAction:run];
+
+        if (distance<=self.atkRange)
+        {
+            //can attack
+            [self changeState:States_Atk];
+        }
+        else
+        {
+            //can move to target
+            [self changeState:States_Move];
+        }
     }
     if (self.state != States_Move)
     {
@@ -85,36 +64,19 @@
 }
 
 
-- (void)attackTarget
-{
-    if (self.state == States_Atk && self.target)
-    {
-        //atk animation
-        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(10, 10)];
-        bullet.position = self.position;
-        [self.parent addChild:bullet];
-
-        SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
-        SKAction *remove = [SKAction removeFromParent];
-        [bullet runAction:[SKAction sequence:@[move,remove]]];
-
-        //logic
-        CGFloat damage = self.target.curHp-[RPComFunction getCurAtkDamageWithMax:self.maxAtk
-                                                                             Min:self.minAtk];
-        [self.target changeCurHp:damage];
-    }
-}
 
 
 
 
 
 #pragma mark - The subclass implementation
+#warning 这里的方法是子类必须实现的
+- (void)update:(CFTimeInterval)currentTime scene:(RPGameScene *)scene{}
 + (NSString*)getNodeName{return nil;}
 - (void)changeState:(States)state{}
 - (void)changeTarget:(RPCharacter *)target{}
-- (void)changeCurHp:(CGFloat)curHp{}
-
+- (void)changeCurHp:(CGFloat)curHp byObj:(RPCharacter*)sender{}
+- (void)attackTarget{}
 
 
 

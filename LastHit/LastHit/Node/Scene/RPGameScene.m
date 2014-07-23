@@ -24,14 +24,26 @@
         friend.position = CGPointMake(100, 100);
         [self addChild:friend];
 
+//        RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] init];
+//        friend2.position = CGPointMake(200, 100);
+//        [self addChild:friend2];
+
+
         RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] init];
-        enemy.position = CGPointMake(100, 300);
+        enemy.position = CGPointMake(150, 350);
         [self addChild:enemy];
 
         RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] init];
         enemy2.position = CGPointMake(200, 200);
         [self addChild:enemy2];
 
+        RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] init];
+        enemy3.position = CGPointMake(50, 250);
+        [self addChild:enemy3];
+
+        RPEnemyCharacter *enemy4 = [[RPEnemyCharacter alloc] init];
+        enemy4.position = CGPointMake(250, 300);
+        [self addChild:enemy4];
 
     }
     return self;
@@ -55,16 +67,14 @@
         if ([node isKindOfClass:[RPFriendCharacter class]])
         {
             RPFriendCharacter *f = (RPFriendCharacter*)node;
-            [f update:currentTime];
-            [f findTargetWithName:[RPEnemyCharacter getNodeName] scene:self];
+            [f update:currentTime scene:self];
         }
     }];
     [self enumerateChildNodesWithName:[RPEnemyCharacter getNodeName] usingBlock:^(SKNode *node, BOOL *stop) {
         if ([node isKindOfClass:[RPEnemyCharacter class]])
         {
             RPEnemyCharacter *e = (RPEnemyCharacter*)node;
-            [e update:currentTime];
-            [e findTargetWithName:[RPFriendCharacter getNodeName] scene:self];
+            [e update:currentTime scene:self];
         }
     }];
 

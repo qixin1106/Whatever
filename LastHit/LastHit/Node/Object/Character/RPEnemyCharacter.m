@@ -26,10 +26,12 @@
         self.size = CGSizeMake(50, 50);
         self.name = ENEMY_NAME;
         self.state = States_Move;
+        self.zRotation = M_PI;
+
         self.lastTime = 0;
         self.atkInterval = 1.3;
-        self.viewRange = 200;
-        self.atkRange = 50;
+        self.viewRange = 300;
+        self.atkRange = 100;
         self.moveSpeed = 30;
 
         self.maxHp = 500;
@@ -48,6 +50,31 @@
 }
 
 
+
+
+#pragma mark -----Override------
+- (void)update:(CFTimeInterval)currentTime scene:(RPGameScene *)scene
+{
+    [self findTargetWithName:[RPFriendCharacter getNodeName] scene:scene];
+
+    //contrl atk
+    if (currentTime-self.lastTime>self.atkInterval)
+    {
+        //fire
+        [self attackTarget];
+        self.lastTime = currentTime;
+    }
+    //control direction
+    if (self.target)
+    {
+        self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
+                                                   targetPosition:self.target.position];
+    }
+    //move
+    [self moveToTarget];
+}
+
+
 #pragma mark - Change states
 - (void)changeState:(States)state
 {
@@ -58,7 +85,7 @@
         {
             case States_Atk:
             {
-                NSLog(@"为了部落!!");
+                //NSLog(@"为了部落!!");
                 break;
             }
             case States_Dead:
@@ -68,12 +95,12 @@
             }
             case States_Move:
             {
-                NSLog(@"力量与荣耀!");
+                //NSLog(@"力量与荣耀!");
                 break;
             }
             case States_Stop:
             {
-                NSLog(@"Stop");
+                //NSLog(@"Stop");
                 break;
             }
             default:
@@ -97,18 +124,18 @@
         else
         {
             //Find a Target
-            NSLog(@"兄弟们搞死他!");
+            //NSLog(@"兄弟们搞死他!");
         }
     }
 }
 
 
 #pragma mark - Change HP
-- (void)changeCurHp:(CGFloat)curHp
+- (void)changeCurHp:(CGFloat)curHp byObj:(RPCharacter *)sender
 {
-    if (self.curHp != curHp)
+    if (self.curHp != curHp && self.curHp>0)
     {
-        self.curHp = curHp;
+        self.curHp = (curHp<0)?0:curHp;
         NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.name,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
         if (![RPComFunction isHpSafe:self])
         {
@@ -120,7 +147,30 @@
             [self changeState:States_Dead];
             [self removeAllActions];
             [self removeFromParent];
+            //change sender state
+            [sender changeState:States_Move];
         }
+    }
+}
+
+
+- (void)attackTarget
+{
+    if (self.state == States_Atk && self.target)
+    {
+        //atk animation
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(10, 10)];
+        bullet.position = self.position;
+        [self.parent addChild:bullet];
+
+        SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
+        SKAction *remove = [SKAction removeFromParent];
+        [bullet runAction:[SKAction sequence:@[move,remove]]];
+
+        //logic
+        CGFloat damage = [RPComFunction getCurAtkDamageWithMax:self.maxAtk
+                                                           Min:self.minAtk];
+        [self.target changeCurHp:self.target.curHp-damage byObj:self];
     }
 }
 
