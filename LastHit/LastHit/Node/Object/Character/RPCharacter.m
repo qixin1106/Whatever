@@ -47,9 +47,9 @@
                                                        targetPosition:character.position];
         if (distance<=self.viewRange)
         {
-            //discover target
             if (self.target==nil)
             {
+                //discover target
                 [self changeTarget:character];
             }
             if (distance<=self.atkRange)
