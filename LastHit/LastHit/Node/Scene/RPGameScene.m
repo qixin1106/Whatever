@@ -43,9 +43,9 @@
 {
     //TEST
     //you can touch the enemy node move to change position,just test.
-    RPEnemyCharacter *e = (RPEnemyCharacter*)[self childNodeWithName:[RPEnemyCharacter getNodeName]];
-    CGPoint point = [[touches anyObject] locationInNode:self];
-    e.position = point;
+//    RPEnemyCharacter *e = (RPEnemyCharacter*)[self childNodeWithName:[RPEnemyCharacter getNodeName]];
+//    CGPoint point = [[touches anyObject] locationInNode:self];
+//    e.position = point;
 }
 
 #pragma mark - Update
