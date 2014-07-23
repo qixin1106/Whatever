@@ -222,6 +222,11 @@
 #endif
 }
 
+/*!
+ *  Debug用显示射程范围
+ *
+ *  @since 1.0
+ */
 - (void)showAtkRangeLine
 {
 #ifdef DEBUG
