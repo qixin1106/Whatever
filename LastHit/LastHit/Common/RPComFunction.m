@@ -7,6 +7,7 @@
 //
 
 #import "RPComFunction.h"
+#import "RPCharacter.h"
 
 @implementation RPComFunction
 
@@ -26,9 +27,14 @@
 }
 
 
-+ (CGFloat)getCurAtkWithMax:(CGFloat)maxAtk Min:(CGFloat)minAtk
++ (CGFloat)getCurAtkDamageWithMax:(CGFloat)maxAtk Min:(CGFloat)minAtk
 {
     return (rand()%((NSInteger)maxAtk-(NSInteger)minAtk))+minAtk;
+}
+
++ (BOOL)isHpSafe:(RPCharacter*)character
+{
+    return (character.curHp/character.maxHp)>0.25?YES:NO;
 }
 
 @end

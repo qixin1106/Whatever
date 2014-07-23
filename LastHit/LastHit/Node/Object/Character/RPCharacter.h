@@ -25,7 +25,8 @@ typedef enum{
 @property (assign, nonatomic) CGFloat viewRange;
 @property (assign, nonatomic) CGFloat moveSpeed;
 
-@property (assign, nonatomic) CGFloat hp;
+@property (assign, nonatomic) CGFloat maxHp;
+@property (assign, nonatomic) CGFloat curHp;
 @property (assign, nonatomic) CGFloat maxAtk;
 @property (assign, nonatomic) CGFloat minAtk;
 @property (assign, nonatomic) CGFloat armor;
@@ -37,6 +38,10 @@ typedef enum{
 
 - (void)update:(CFTimeInterval)currentTime;
 - (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene;
+
+- (void)changeState:(States)state;
+- (void)changeTarget:(RPCharacter *)target;
+- (void)changeCurHp:(CGFloat)curHp;
 
 - (void)showViewRangeLine;
 - (void)showAtkRangeLine;

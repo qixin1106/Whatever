@@ -25,8 +25,13 @@
         [self addChild:friend];
 
         RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] init];
-        enemy.position = CGPointMake(100, 400);
+        enemy.position = CGPointMake(100, 300);
         [self addChild:enemy];
+
+        RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] init];
+        enemy2.position = CGPointMake(200, 200);
+        [self addChild:enemy2];
+
 
     }
     return self;

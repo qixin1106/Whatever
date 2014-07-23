@@ -20,8 +20,11 @@
         [self attackTarget];
         self.lastTime = currentTime;
     }
-    self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
-                                               targetPosition:self.target.position];
+    if (self.target)
+    {
+        self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
+                                                   targetPosition:self.target.position];
+    }
     [self moveToTarget];
 }
 
@@ -41,27 +44,30 @@
     [scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
-                                                     targetPosition:character.position];
+                                                       targetPosition:character.position];
         if (distance<=self.viewRange)
         {
             //discover target
-            self.target = character;
+            if (self.target==nil)
+            {
+                [self changeTarget:character];
+            }
             if (distance<=self.atkRange)
             {
                 //can attack
-                self.state = States_Atk;
+                [self changeState:States_Atk];
             }
             else
             {
                 //can move to target
-                self.state = States_Move;
+                [self changeState:States_Move];
             }
         }
         else
         {
             //Can't attack
-            self.state = States_Move;
-            self.target = nil;
+            [self changeState:States_Move];
+            [self changeTarget:nil];
         }
     }];
 }
@@ -74,7 +80,7 @@
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                        targetPosition:self.target.position];
         SKAction *run = [SKAction moveTo:self.target.position duration:distance/self.moveSpeed];
-        
+
         [self runAction:run];
     }
     if (self.state != States_Move)
@@ -88,6 +94,7 @@
 {
     if (self.state == States_Atk && self.target)
     {
+        //atk animation
         SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(10, 10)];
         bullet.position = self.position;
         [self.parent addChild:bullet];
@@ -95,60 +102,22 @@
         SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
         SKAction *remove = [SKAction removeFromParent];
         [bullet runAction:[SKAction sequence:@[move,remove]]];
+
+        //logic
+        CGFloat damage = self.target.curHp-[RPComFunction getCurAtkDamageWithMax:self.maxAtk
+                                                                             Min:self.minAtk];
+        [self.target changeCurHp:damage];
     }
 }
 
 
 
-#pragma mark - Change states
-- (void)setState:(States)state
-{
-    if (_state!=state)
-    {
-        _state=state;
-        switch (_state)
-        {
-            case States_Atk:
-            {
-                break;
-            }
-            case States_Dead:
-            {
-                break;
-            }
-            case States_Move:
-            {
-                break;
-            }
-            case States_Stop:
-            {
-                break;
-            }
-            default:
-                break;
-        }
-    }
-}
 
 
-#pragma mark - Change target
-- (void)setTarget:(RPCharacter *)target
-{
-    if (_target != target)
-    {
-        _target = target;
-        //Miss target
-        if (!_target)
-        {
-            [self removeAllActions];
-        }
-        else
-        {
-            NSLog(@"德马西亚!!!");
-        }
-    }
-}
-
+#pragma mark - The subclass implementation
+- (void)changeState:(States)state{}
+- (void)changeTarget:(RPCharacter *)target{}
+- (void)changeCurHp:(CGFloat)curHp{}
 
 
 
