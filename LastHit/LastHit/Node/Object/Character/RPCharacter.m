@@ -30,9 +30,11 @@
                                                            targetPosition:character.position];
             if (distance<=self.viewRange)
             {
-                    //discover target
-                [self changeTarget:character];
-                return;
+                //discover target
+                if (!self.target)
+                {
+                    [self changeTarget:character];
+                }
             }
             else
             {

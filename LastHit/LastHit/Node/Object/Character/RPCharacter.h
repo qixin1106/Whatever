@@ -34,7 +34,6 @@ typedef enum{
 
 @property (assign, nonatomic) States state;
 @property (weak, nonatomic) RPCharacter *target;
-@property (assign, nonatomic) CGFloat targetDistance;
 
 + (NSString*)getNodeName;
 

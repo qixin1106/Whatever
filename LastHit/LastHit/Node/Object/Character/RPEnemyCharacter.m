@@ -91,12 +91,12 @@
 
         SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
         SKAction *remove = [SKAction removeFromParent];
-        [bullet runAction:[SKAction sequence:@[move,remove]]];
-
-        //logic
-        CGFloat damage = [RPComFunction getCurAtkDamageWithMax:self.maxAtk
-                                                           Min:self.minAtk];
-        [self.target changeCurHp:self.target.curHp-damage byObj:self];
+        [bullet runAction:[SKAction sequence:@[move,remove]] completion:^{
+            //logic
+            CGFloat damage = [RPComFunction getCurAtkDamageWithMax:self.maxAtk
+                                                               Min:self.minAtk];
+            [self.target changeCurHp:self.target.curHp-damage byObj:self];
+        }];
     }
 }
 

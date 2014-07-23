@@ -42,7 +42,6 @@
         self.maxAtk = 32;
         self.minAtk = 25;
         self.armor = 2;
-
         [self showViewRangeLine];
         [self showAtkRangeLine];
     }
@@ -53,6 +52,7 @@
 #pragma mark - Update
 - (void)updateNode:(NSNotification*)notification
 {
+    
     RPGameScene *scene = [notification.userInfo objectForKey:@"kScene"];
     NSTimeInterval currentTime = [[notification.userInfo objectForKey:@"kTime"] doubleValue];
     

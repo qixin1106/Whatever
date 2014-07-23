@@ -11,6 +11,7 @@
 
 @implementation RPComFunction
 
+
 + (CGFloat)getDistanceWithYourPosition:(CGPoint)your
                       targetPosition:(CGPoint)target
 {
