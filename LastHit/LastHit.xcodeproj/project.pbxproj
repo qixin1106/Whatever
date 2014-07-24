@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		991A5301197D82AE003160FA /* RPComFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 991A5300197D82AE003160FA /* RPComFunction.m */; };
+		9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959D1AC1981470D0054FEDB /* RPHpBarNode.m */; };
 		9975D646197D57FF005971DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975D645197D57FF005971DE /* Foundation.framework */; };
 		9975D648197D57FF005971DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975D647197D57FF005971DE /* CoreGraphics.framework */; };
 		9975D64A197D57FF005971DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975D649197D57FF005971DE /* UIKit.framework */; };
@@ -45,6 +46,9 @@
 /* Begin PBXFileReference section */
 		991A52FF197D82AE003160FA /* RPComFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPComFunction.h; sourceTree = "<group>"; };
 		991A5300197D82AE003160FA /* RPComFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPComFunction.m; sourceTree = "<group>"; };
+		9959D1AB1981470D0054FEDB /* RPHpBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPHpBarNode.h; sourceTree = "<group>"; };
+		9959D1AC1981470D0054FEDB /* RPHpBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPHpBarNode.m; sourceTree = "<group>"; };
+		9959D1AE1981567A0054FEDB /* RPGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGlobal.h; sourceTree = "<group>"; };
 		9975D642197D57FF005971DE /* LastHit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastHit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9975D645197D57FF005971DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9975D647197D57FF005971DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9959D1AA198146900054FEDB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9959D1AB1981470D0054FEDB /* RPHpBarNode.h */,
+				9959D1AC1981470D0054FEDB /* RPHpBarNode.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		9975D639197D57FF005971DE = {
 			isa = PBXGroup;
 			children = (
@@ -218,15 +231,9 @@
 				9975D698197D5C0C005971DE /* RPHeader.h */,
 				991A52FF197D82AE003160FA /* RPComFunction.h */,
 				991A5300197D82AE003160FA /* RPComFunction.m */,
+				9959D1AE1981567A0054FEDB /* RPGlobal.h */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		D251CE22197F9CD6000B85AF /* Building */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Building;
 			sourceTree = "<group>";
 		};
 		D27282DC197E4B7600D17827 /* Resource */ = {
@@ -267,7 +274,7 @@
 			children = (
 				D27282E4197E6E9800D17827 /* RPBaseObjNode.h */,
 				D27282E5197E6E9800D17827 /* RPBaseObjNode.m */,
-				D251CE22197F9CD6000B85AF /* Building */,
+				9959D1AA198146900054FEDB /* Common */,
 				D2BD66AB197E07A400B95A7A /* Character */,
 			);
 			path = Object;
@@ -391,6 +398,7 @@
 				D2BD66B1197E081400B95A7A /* RPGameScene.m in Sources */,
 				991A5301197D82AE003160FA /* RPComFunction.m in Sources */,
 				9975D654197D57FF005971DE /* main.m in Sources */,
+				9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */,
 				D2BD66B7197E08DA00B95A7A /* RPEnemyCharacter.m in Sources */,
 				D2BD66B4197E08B500B95A7A /* RPFriendCharacter.m in Sources */,
 				9975D695197D5B79005971DE /* RPStartScene.m in Sources */,

@@ -20,31 +20,8 @@
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
 
         //Test
-        RPFriendCharacter *friend = [[RPFriendCharacter alloc] init];
-        friend.position = CGPointMake(100, 100);
+        RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
         [self addChild:friend];
-
-//        RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] init];
-//        friend2.position = CGPointMake(200, 100);
-//        [self addChild:friend2];
-
-
-//        RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] init];
-//        enemy.position = CGPointMake(150, 350);
-//        [self addChild:enemy];
-//
-//        RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] init];
-//        enemy2.position = CGPointMake(200, 200);
-//        [self addChild:enemy2];
-//
-//        RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] init];
-//        enemy3.position = CGPointMake(50, 250);
-//        [self addChild:enemy3];
-//
-//        RPEnemyCharacter *enemy4 = [[RPEnemyCharacter alloc] init];
-//        enemy4.position = CGPointMake(250, 300);
-//        [self addChild:enemy4];
-
     }
     return self;
 }
@@ -56,8 +33,7 @@
     //TEST
     //you can touch the enemy node move to change position,just test.
     CGPoint point = [[touches anyObject] locationInNode:self];
-    RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] init];
-    enemy.position = point;
+    RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(point.x,point.y, 50, 50)];
     [self addChild:enemy];
 }
 

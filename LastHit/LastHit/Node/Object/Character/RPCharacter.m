@@ -7,9 +7,32 @@
 //
 
 #import "RPCharacter.h"
+#import "RPHpBarNode.h"
 
+@interface RPCharacter ()
+@end
 
 @implementation RPCharacter
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super init];
+    if (self)
+    {
+        self.position = CGPointMake(frame.origin.x, frame.origin.y);
+        self.size = CGSizeMake(frame.size.width, frame.size.height);        
+    }
+    return self;
+}
+
+
+- (void)setPosition:(CGPoint)position
+{
+    [super setPosition:position];
+    self.hpBarNode.position = CGPointMake(-self.size.width*0.5,
+                                          self.size.height*0.5+5);
+}
 
 #pragma mark - Find target
 /*!
@@ -183,6 +206,10 @@
     if (self.curHp != curHp && self.curHp>0)
     {
         self.curHp = (curHp<0)?0:curHp;
+        if (self.hpBarNode)
+        {
+            [self.hpBarNode changeWidthWithHpRate:self.curHp/self.maxHp];
+        }
         NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.name,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
         if (![RPComFunction isHpSafe:self])
         {

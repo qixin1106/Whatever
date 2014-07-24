@@ -8,6 +8,7 @@
 
 #import "RPEnemyCharacter.h"
 #import "RPFriendCharacter.h"
+#import "RPHpBarNode.h"
 
 @implementation RPEnemyCharacter
 
@@ -21,13 +22,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super initWithImageNamed:@"e.png"];
+    self = [super initWithFrame:frame];
     if (self)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
-        self.size = CGSizeMake(50, 50);
+        self.texture = [SKTexture textureWithImageNamed:@"e.png"];
         self.name = ENEMY_NAME;
         self.state = States_Move;
         self.zRotation = M_PI;
@@ -46,6 +47,13 @@
 
         [self showViewRangeLine];
         [self showAtkRangeLine];
+        
+        //血条
+        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Eneny];
+        self.hpBarNode.position = CGPointMake(-self.size.width*0.5,
+                                              self.size.height*0.5+5);
+        [self addChild:self.hpBarNode];
+        
     }
     return self;
 }

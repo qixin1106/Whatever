@@ -17,7 +17,7 @@ typedef enum{
     States_Dead=3
 }States;
 
-
+@class RPHpBarNode;
 @interface RPCharacter : RPBaseObjNode
 @property (assign, nonatomic) NSTimeInterval lastTime;
 
@@ -34,6 +34,11 @@ typedef enum{
 
 @property (assign, nonatomic) States state;
 @property (weak, nonatomic) RPCharacter *target;
+
+@property (strong, nonatomic) RPHpBarNode *hpBarNode;
+
+
+- (instancetype)initWithFrame:(CGRect)frame;
 
 + (NSString*)getNodeName;
 

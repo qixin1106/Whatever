@@ -8,6 +8,7 @@
 
 #import "RPFriendCharacter.h"
 #import "RPEnemyCharacter.h"
+#import "RPHpBarNode.h"
 
 @implementation RPFriendCharacter
 
@@ -22,13 +23,14 @@
 }
 
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super initWithImageNamed:@"f.png"];
+    self = [super initWithFrame:frame];
     if (self)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
-        self.size = CGSizeMake(50, 50);
+        self.texture = [SKTexture textureWithImageNamed:@"f.png"];
+        self.
         self.name = FRIEND_NAME;
         self.state = States_Move;
         self.lastTime = 0;
@@ -42,8 +44,16 @@
         self.maxAtk = 32;
         self.minAtk = 25;
         self.armor = 2;
+        
         [self showViewRangeLine];
         [self showAtkRangeLine];
+        
+        //血条
+        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend];
+        self.hpBarNode.position = CGPointMake(-self.size.width*0.5,
+                                              self.size.height*0.5+5);
+        [self addChild:self.hpBarNode];
+
     }
     return self;
 }

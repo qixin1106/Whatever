@@ -22,7 +22,11 @@
 //TODO: 角度/弧度
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
 #define radianToDegrees(radian) (radian*180.0)/(M_PI)
+/******************************************************************************/
 
+#define MAP_LAYER -1000
+#define OBJ_LAYER -500
+#define UI_LAYER -100
 
 
 
@@ -31,5 +35,7 @@
 #define FRIEND_NAME @"FRIEND_NAME"
 #define ENEMY_NAME @"ENEMY_NAME"
 
+//Update观察者注册标示
 #define UPDATE_MSG @"UPDATE_MSG"
+/******************************************************************************/
 
