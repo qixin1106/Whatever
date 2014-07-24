@@ -8,6 +8,7 @@
 
 #import "RPCharacter.h"
 #import "RPHpBarNode.h"
+#import "RPGameScene.h"
 
 @interface RPCharacter ()
 @end

@@ -7,8 +7,7 @@
 //
 
 
-#import "RPBaseObjNode.h"
-#import "RPGameScene.h"
+#import <SpriteKit/SpriteKit.h>
 
 typedef enum{
     States_Stop=0,
@@ -17,8 +16,9 @@ typedef enum{
     States_Dead=3
 }States;
 
+@class RPGameScene;
 @class RPHpBarNode;
-@interface RPCharacter : RPBaseObjNode
+@interface RPCharacter : SKSpriteNode
 @property (assign, nonatomic) NSTimeInterval lastTime;
 
 @property (assign, nonatomic) NSTimeInterval atkInterval;
