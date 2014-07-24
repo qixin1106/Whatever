@@ -23,6 +23,7 @@
     self = [super init];
     if (self)
     {
+        self.zPosition = HP_BAR_LAYER;
         self.size = CGSizeMake(HPBAR_WIDTH, HPBAR_HEIGHT);
         self.anchorPoint = CGPointMake(0, 1);
         self.color = RGB(255, 255, 255);

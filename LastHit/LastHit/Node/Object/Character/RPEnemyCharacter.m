@@ -94,6 +94,7 @@
     {
         //atk animation
         SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(10, 10)];
+        bullet.zPosition = BULLET_LAYER;
         bullet.position = self.position;
         [self.parent addChild:bullet];
 

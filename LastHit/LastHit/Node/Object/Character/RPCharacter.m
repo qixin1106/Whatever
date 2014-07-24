@@ -21,6 +21,7 @@
     self = [super init];
     if (self)
     {
+        self.zPosition = CHARACTER_LAYER;
         self.position = CGPointMake(frame.origin.x, frame.origin.y);
         self.size = CGSizeMake(frame.size.width, frame.size.height);        
     }
@@ -239,8 +240,9 @@
 {
 #ifdef DEBUG
     SKShapeNode *viewRangeLine = [SKShapeNode node];
-    viewRangeLine.strokeColor = RGB(0, 0, 0);
+    viewRangeLine.strokeColor = RGB(255, 255, 255);
     viewRangeLine.lineWidth = 1.0f;
+    viewRangeLine.alpha = 0.5f;
 
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0)
                                                             radius:self.viewRange
@@ -260,17 +262,18 @@
 - (void)showAtkRangeLine
 {
 #ifdef DEBUG
-    SKShapeNode *viewRangeLine = [SKShapeNode node];
-    viewRangeLine.strokeColor = RGB(255, 0, 0);
-    viewRangeLine.lineWidth = 1.0f;
+    SKShapeNode *atkRangeLine = [SKShapeNode node];
+    atkRangeLine.strokeColor = RGB(255, 0, 0);
+    atkRangeLine.lineWidth = 1.0f;
+    atkRangeLine.alpha = 0.5f;
 
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0)
                                                             radius:self.atkRange
                                                         startAngle:M_PI
                                                           endAngle:-M_PI
                                                          clockwise:YES];
-    viewRangeLine.path = ovalPath.CGPath;
-    [self addChild:viewRangeLine];
+    atkRangeLine.path = ovalPath.CGPath;
+    [self addChild:atkRangeLine];
 #endif
 }
 @end

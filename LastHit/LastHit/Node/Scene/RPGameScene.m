@@ -9,7 +9,7 @@
 #import "RPGameScene.h"
 #import "RPFriendCharacter.h"
 #import "RPEnemyCharacter.h"
-
+#import "RPMapNode.h"
 @implementation RPGameScene
 
 #pragma mark - Init
@@ -17,8 +17,8 @@
 {
     if (self = [super initWithSize:size])
     {
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-
+        RPMapNode *map = [[RPMapNode alloc] init];
+        [self addChild:map];
         //Test
         RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
         [self addChild:friend];
