@@ -31,17 +31,18 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
         self.texture = [SKTexture textureWithImageNamed:@"f.png"];
         self.name = FRIEND_NAME;
+        self.nickname = @"友方战士";
         self.state = States_Move;
         self.lastTime = 0;
 
-        self.atkInterval = 0.1;
+        self.atkInterval = 1.0;
         self.viewRange = 300;
-        self.atkRange = 50;
+        self.atkRange = 100;
         self.moveSpeed = 30;
-        self.maxHp = 2000;
+        self.maxHp = 500;
         self.curHp = self.maxHp;
-        self.maxAtk = 32;
-        self.minAtk = 25;
+        self.maxAtk = 23;
+        self.minAtk = 19;
         self.armor = 2;
         
         [self showViewRangeLine];
@@ -61,11 +62,9 @@
 #pragma mark - Update
 - (void)updateNode:(NSNotification*)notification
 {
-    
-    RPGameScene *scene = [notification.userInfo objectForKey:@"kScene"];
     NSTimeInterval currentTime = [[notification.userInfo objectForKey:@"kTime"] doubleValue];
     
-    [self findTargetWithName:[RPEnemyCharacter getNodeName] scene:scene];
+    [self findTargetWithName:[RPEnemyCharacter getNodeName]];
 
     //contrl atk
     if (currentTime-self.lastTime>self.atkInterval)
@@ -101,12 +100,13 @@
 
         SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
         SKAction *remove = [SKAction removeFromParent];
-        [bullet runAction:[SKAction sequence:@[move,remove]]];
+        [bullet runAction:[SKAction sequence:@[move,remove]] completion:^{
+            //logic
+            CGFloat damage = [RPComFunction getCurAtkDamageWithMax:self.maxAtk
+                                                               Min:self.minAtk];
+            [self.target changeCurHp:self.target.curHp-damage byObj:self];
+        }];
 
-        //logic
-        CGFloat damage = [RPComFunction getCurAtkDamageWithMax:self.maxAtk
-                                                           Min:self.minAtk];
-        [self.target changeCurHp:self.target.curHp-damage byObj:self];
     }
 }
 

@@ -30,6 +30,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
         self.texture = [SKTexture textureWithImageNamed:@"e.png"];
         self.name = ENEMY_NAME;
+        self.nickname = @"敌方战士";
         self.state = States_Move;
         self.zRotation = M_PI;
 
@@ -63,10 +64,9 @@
 #pragma mark - Update
 - (void)updateNode:(NSNotification*)notification
 {
-    RPGameScene *scene = [notification.userInfo objectForKey:@"kScene"];
     NSTimeInterval currentTime = [[notification.userInfo objectForKey:@"kTime"] doubleValue];
     
-    [self findTargetWithName:[RPFriendCharacter getNodeName] scene:scene];
+    [self findTargetWithName:[RPFriendCharacter getNodeName]];
     
     //contrl atk
     if (currentTime-self.lastTime>self.atkInterval)

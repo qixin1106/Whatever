@@ -9,6 +9,7 @@
 #import "RPGameScene.h"
 #import "RPFriendCharacter.h"
 #import "RPEnemyCharacter.h"
+#import "RPFriendHero.h"
 #import "RPMapNode.h"
 @implementation RPGameScene
 
@@ -19,9 +20,18 @@
     {
         RPMapNode *map = [[RPMapNode alloc] init];
         [self addChild:map];
+        
+        
         //Test
-        RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
+        RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 150, 50, 50)];
         [self addChild:friend];
+        
+        RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
+        [self addChild:friend2];
+
+        RPFriendHero *fHero = [[RPFriendHero alloc] initWithFrame:CGRectMake(160, 100, 50, 50)];
+        [self addChild:fHero];
+
     }
     return self;
 }
@@ -40,8 +50,7 @@
 #pragma mark - Update
 - (void)update:(NSTimeInterval)currentTime
 {
-    NSDictionary *userInfo = @{@"kScene": self,
-                               @"kTime":[NSNumber numberWithDouble:currentTime]};
+    NSDictionary *userInfo = @{@"kTime":[NSNumber numberWithDouble:currentTime]};
     [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_MSG object:nil userInfo:userInfo];
 }
 

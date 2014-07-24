@@ -8,8 +8,18 @@
 
 #import "RPFriendHero.h"
 #import "RPHpBarNode.h"
-
+#import "RPEnemyCharacter.h"
 @implementation RPFriendHero
+
++ (NSString*)getNodeName
+{
+    return FRIEND_NAME;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -17,14 +27,15 @@
     if (self)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
-        self.texture = [SKTexture textureWithImageNamed:@"f.png"];
+        self.texture = [SKTexture textureWithImageNamed:@"xiaoqiang.png"];
         self.name = FRIEND_NAME;
+        self.nickname = @"英雄小强";
         self.state = States_Move;
         self.lastTime = 0;
         
-        self.atkInterval = 0.1;
+        self.atkInterval = 0.5;
         self.viewRange = 300;
-        self.atkRange = 50;
+        self.atkRange = 100;
         self.moveSpeed = 30;
         self.maxHp = 2000;
         self.curHp = self.maxHp;
@@ -44,6 +55,57 @@
     }
     return self;
 }
+
+#pragma mark - Update
+- (void)updateNode:(NSNotification*)notification
+{
+    NSTimeInterval currentTime = [[notification.userInfo objectForKey:@"kTime"] doubleValue];
+    
+    [self findTargetWithName:[RPEnemyCharacter getNodeName]];
+    
+    //contrl atk
+    if (currentTime-self.lastTime>self.atkInterval)
+    {
+        //fire
+        [self attackTarget];
+        self.lastTime = currentTime;
+    }
+    //control direction
+    if (self.target)
+    {
+        self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
+                                                   targetPosition:self.target.position];
+    }
+    //move
+    [self moveToTarget];
+}
+
+
+
+
+
+#pragma mark -----Override------
+- (void)attackTarget
+{
+    if (self.state == States_Atk && self.target)
+    {
+        //override attack effect here...
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(10, 10)];
+        bullet.zPosition = BULLET_LAYER;
+        bullet.position = self.position;
+        [self.parent addChild:bullet];
+        
+        SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
+        SKAction *remove = [SKAction removeFromParent];
+        [bullet runAction:[SKAction sequence:@[move,remove]] completion:^{
+            //logic
+            CGFloat damage = [RPComFunction getCurAtkDamageWithMax:self.maxAtk
+                                                               Min:self.minAtk];
+            [self.target changeCurHp:self.target.curHp-damage byObj:self];
+        }];
+    }
+}
+
 
 
 @end

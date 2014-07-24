@@ -16,7 +16,6 @@ typedef enum{
     States_Dead=3
 }States;
 
-@class RPGameScene;
 @class RPHpBarNode;
 @interface RPCharacter : SKSpriteNode
 @property (assign, nonatomic) NSTimeInterval lastTime;
@@ -26,6 +25,7 @@ typedef enum{
 @property (assign, nonatomic) CGFloat viewRange;
 @property (assign, nonatomic) CGFloat moveSpeed;
 
+@property (copy, nonatomic) NSString *nickname;
 @property (assign, nonatomic) CGFloat maxHp;
 @property (assign, nonatomic) CGFloat curHp;
 @property (assign, nonatomic) CGFloat maxAtk;
@@ -42,7 +42,7 @@ typedef enum{
 
 + (NSString*)getNodeName;
 
-- (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene;
+- (void)findTargetWithName:(NSString*)name;
 - (void)moveToTarget;
 
 - (void)changeState:(States)state;

@@ -8,7 +8,6 @@
 
 #import "RPCharacter.h"
 #import "RPHpBarNode.h"
-#import "RPGameScene.h"
 
 @interface RPCharacter ()
 @end
@@ -45,11 +44,11 @@
  *
  *  @since 1.0
  */
-- (void)findTargetWithName:(NSString*)name scene:(RPGameScene*)scene
+- (void)findTargetWithName:(NSString*)name
 {
     if (!self.target)
     {
-        [scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
+        [self.scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
             RPCharacter *character = (RPCharacter*)node;
             CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                            targetPosition:character.position];
@@ -139,12 +138,12 @@
         {
             case States_Atk:
             {
-                NSLog(@"[%@]呕哼~~(豺狼人)",self.name);
+                NSLog(@"[%@]呕哼~~(豺狼人)",self.nickname);
                 break;
             }
             case States_Dead:
             {
-                NSLog(@"[%@]祖国万岁",self.name);
+                NSLog(@"[%@]祖国万岁",self.nickname);
                 self.target = nil;
                 [self removeAllActions];
                 [self removeFromParent];
@@ -152,12 +151,12 @@
             }
             case States_Move:
             {
-                NSLog(@"[%@]为了部落",self.name);
+                NSLog(@"[%@]为了部落",self.nickname);
                 break;
             }
             case States_Stop:
             {
-                NSLog(@"[%@]Stop",self.name);
+                NSLog(@"[%@]Stop",self.nickname);
                 break;
             }
             default:
@@ -212,10 +211,10 @@
         {
             [self.hpBarNode changeWidthWithHpRate:self.curHp/self.maxHp];
         }
-        NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.name,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
+        NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.nickname,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
         if (![RPComFunction isHpSafe:self])
         {
-            NSLog(@"[%@]要死了,要死了,要死了",self.name);
+            NSLog(@"[%@]要死了,要死了,要死了",self.nickname);
         }
         if (self.curHp<=0)
         {
