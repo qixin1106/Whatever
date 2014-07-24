@@ -35,7 +35,7 @@
 
 + (BOOL)isHpSafe:(RPCharacter*)character
 {
-    return (character.curHp/character.maxHp)>0.25?YES:NO;
+    return (character.curHp/character.maxHp)>0.2?YES:NO;
 }
 
 @end
