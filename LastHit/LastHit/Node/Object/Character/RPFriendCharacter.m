@@ -30,7 +30,6 @@
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
         self.texture = [SKTexture textureWithImageNamed:@"f.png"];
-        self.
         self.name = FRIEND_NAME;
         self.state = States_Move;
         self.lastTime = 0;
