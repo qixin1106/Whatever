@@ -18,6 +18,7 @@
 {
     if (self = [super initWithSize:size])
     {
+        //map
         RPMapNode *map = [[RPMapNode alloc] init];
         [self addChild:map];
         
@@ -41,7 +42,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //TEST
-    //you can touch the enemy node move to change position,just test.
+    //add enemy node,just test.
     CGPoint point = [[touches anyObject] locationInNode:self];
     RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(point.x,point.y, 50, 50)];
     [self addChild:enemy];
@@ -50,8 +51,17 @@
 #pragma mark - Update
 - (void)update:(NSTimeInterval)currentTime
 {
-    NSDictionary *userInfo = @{@"kTime":[NSNumber numberWithDouble:currentTime]};
-    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_MSG object:nil userInfo:userInfo];
+    [self enumerateChildNodesWithName:ENEMY_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+        RPCharacter *character = (RPCharacter*)node;
+        [character update:currentTime];
+    }];
+    [self enumerateChildNodesWithName:FRIEND_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+        RPCharacter *character = (RPCharacter*)node;
+        [character update:currentTime];
+    }];
+
+//    NSDictionary *userInfo = @{@"kTime":[NSNumber numberWithDouble:currentTime]};
+//    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_MSG object:nil userInfo:userInfo];
 }
 
 @end

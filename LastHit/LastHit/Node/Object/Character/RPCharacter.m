@@ -118,7 +118,7 @@
  *  @since 1.0
  */
 + (NSString*)getNodeName{return nil;}
-
+- (void)attackTarget{}
 
 
 #pragma mark - Change state
@@ -207,24 +207,63 @@
     if (self.curHp != curHp && self.curHp>0)
     {
         self.curHp = (curHp<0)?0:curHp;
+        
+        //refresh HpBar
         if (self.hpBarNode)
         {
+            NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.nickname,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
             [self.hpBarNode changeWidthWithHpRate:self.curHp/self.maxHp];
         }
-        NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.nickname,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
+       
+        //low hp alert
         if (![RPComFunction isHpSafe:self])
         {
             NSLog(@"[%@]要死了,要死了,要死了",self.nickname);
         }
+       
+        //dead
         if (self.curHp<=0)
         {
             //Dead
             [self changeState:States_Dead];
             //change sender state
             [sender changeTarget:nil];
-            [sender changeState:States_Move];
         }
     }
+}
+
+
+#pragma mark - Update
+/*!
+ *  刷新节点
+ *
+ *  @param currentTime Scene刷新时间
+ *
+ *  @since 1.0
+ */
+- (void)update:(NSTimeInterval)currentTime
+{
+    if (!self.target)
+    {
+        [self changeState:States_Move];
+    }
+    
+    //contrl atk
+    if (currentTime-self.lastTime>self.atkInterval)
+    {
+        //fire
+        [self attackTarget];
+        self.lastTime = currentTime;
+    }
+    //control direction
+    if (self.target)
+    {
+        self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
+                                                   targetPosition:self.target.position];
+    }
+    //move
+    [self moveToTarget];
+
 }
 
 

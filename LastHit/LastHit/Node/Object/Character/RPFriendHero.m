@@ -16,17 +16,12 @@
     return FRIEND_NAME;
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNode:) name:UPDATE_MSG object:nil];
         self.texture = [SKTexture textureWithImageNamed:@"xiaoqiang.png"];
         self.name = FRIEND_NAME;
         self.nickname = @"英雄小强";
@@ -57,30 +52,11 @@
 }
 
 #pragma mark - Update
-- (void)updateNode:(NSNotification*)notification
+- (void)update:(NSTimeInterval)currentTime
 {
-    NSTimeInterval currentTime = [[notification.userInfo objectForKey:@"kTime"] doubleValue];
-    
+    [super update:currentTime];
     [self findTargetWithName:[RPEnemyCharacter getNodeName]];
-    
-    //contrl atk
-    if (currentTime-self.lastTime>self.atkInterval)
-    {
-        //fire
-        [self attackTarget];
-        self.lastTime = currentTime;
-    }
-    //control direction
-    if (self.target)
-    {
-        self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
-                                                   targetPosition:self.target.position];
-    }
-    //move
-    [self moveToTarget];
 }
-
-
 
 
 

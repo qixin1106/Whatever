@@ -36,7 +36,5 @@
 #define FRIEND_NAME @"FRIEND_NAME"
 #define ENEMY_NAME @"ENEMY_NAME"
 
-//Update观察者注册标示
-#define UPDATE_MSG @"UPDATE_MSG"
 /******************************************************************************/
 
