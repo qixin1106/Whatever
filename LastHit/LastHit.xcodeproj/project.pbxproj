@@ -10,6 +10,9 @@
 		991A5301197D82AE003160FA /* RPComFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 991A5300197D82AE003160FA /* RPComFunction.m */; };
 		9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959D1AC1981470D0054FEDB /* RPHpBarNode.m */; };
 		9974BBDB198174140073C213 /* RPMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9974BBDA198174140073C213 /* RPMapNode.m */; };
+		9974BBDE198179280073C213 /* RPFriendHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 9974BBDD198179280073C213 /* RPFriendHero.m */; };
+		9974BBE119817BF40073C213 /* xiaoqiang.png in Resources */ = {isa = PBXBuildFile; fileRef = 9974BBDF19817BF40073C213 /* xiaoqiang.png */; };
+		9974BBE219817BF40073C213 /* xiaoyu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9974BBE019817BF40073C213 /* xiaoyu.png */; };
 		9975D646197D57FF005971DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975D645197D57FF005971DE /* Foundation.framework */; };
 		9975D648197D57FF005971DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975D647197D57FF005971DE /* CoreGraphics.framework */; };
 		9975D64A197D57FF005971DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9975D649197D57FF005971DE /* UIKit.framework */; };
@@ -51,6 +54,10 @@
 		9959D1AE1981567A0054FEDB /* RPGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGlobal.h; sourceTree = "<group>"; };
 		9974BBD9198174140073C213 /* RPMapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPMapNode.h; sourceTree = "<group>"; };
 		9974BBDA198174140073C213 /* RPMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPMapNode.m; sourceTree = "<group>"; };
+		9974BBDC198179280073C213 /* RPFriendHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPFriendHero.h; sourceTree = "<group>"; };
+		9974BBDD198179280073C213 /* RPFriendHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPFriendHero.m; sourceTree = "<group>"; };
+		9974BBDF19817BF40073C213 /* xiaoqiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaoqiang.png; sourceTree = "<group>"; };
+		9974BBE019817BF40073C213 /* xiaoyu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaoyu.png; sourceTree = "<group>"; };
 		9975D642197D57FF005971DE /* LastHit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastHit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9975D645197D57FF005971DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9975D647197D57FF005971DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -258,6 +265,8 @@
 		D27282DD197E4B7600D17827 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				9974BBDF19817BF40073C213 /* xiaoqiang.png */,
+				9974BBE019817BF40073C213 /* xiaoyu.png */,
 				D27282E0197E4B8E00D17827 /* e.png */,
 				D27282E1197E4B8E00D17827 /* f.png */,
 			);
@@ -297,6 +306,8 @@
 				D2BD66B3197E08B500B95A7A /* RPFriendCharacter.m */,
 				D2BD66B5197E08DA00B95A7A /* RPEnemyCharacter.h */,
 				D2BD66B6197E08DA00B95A7A /* RPEnemyCharacter.m */,
+				9974BBDC198179280073C213 /* RPFriendHero.h */,
+				9974BBDD198179280073C213 /* RPFriendHero.m */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -380,8 +391,10 @@
 			files = (
 				D27282E2197E4B8E00D17827 /* e.png in Resources */,
 				9975D652197D57FF005971DE /* InfoPlist.strings in Resources */,
+				9974BBE219817BF40073C213 /* xiaoyu.png in Resources */,
 				D27282E3197E4B8E00D17827 /* f.png in Resources */,
 				9975D665197D57FF005971DE /* Images.xcassets in Resources */,
+				9974BBE119817BF40073C213 /* xiaoqiang.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9975D68D197D5A54005971DE /* RPRootVC.m in Sources */,
+				9974BBDE198179280073C213 /* RPFriendHero.m in Sources */,
 				9975D68C197D5A54005971DE /* RPAppDelegate.m in Sources */,
 				D2BD66B1197E081400B95A7A /* RPGameScene.m in Sources */,
 				991A5301197D82AE003160FA /* RPComFunction.m in Sources */,
