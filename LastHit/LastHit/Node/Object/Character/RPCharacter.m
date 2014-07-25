@@ -94,12 +94,15 @@
  */
 - (void)moveToTarget
 {
-    if (self.state == States_Find && self.target)
+    if (self.target)
     {
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                        targetPosition:self.target.position];
-        SKAction *run = [SKAction moveTo:self.target.position duration:distance/self.moveSpeed];
-        [self runAction:run];
+        if (self.state == States_Find)
+        {
+            SKAction *run = [SKAction moveTo:self.target.position duration:distance/self.moveSpeed];
+            [self runAction:run];
+        }
 
         if (distance<=self.atkRange)
         {

@@ -24,20 +24,20 @@
         
         
         //Test
-//        RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 150, 50, 50)];
-//        [self addChild:friend];
-//        
-//        RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
-//        [self addChild:friend2];
+        RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 150, 50, 50)];
+        [self addChild:friend];
+        
+        RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
+        [self addChild:friend2];
 
         RPFriendHero *fHero = [[RPFriendHero alloc] initWithFrame:CGRectMake(160, 100, 50, 50)];
         [self addChild:fHero];
 
         RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(100, 400, 50, 50)];
         [self addChild:enemy];
-//
-//        RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(220, 400, 50, 50)];
-//        [self addChild:enemy2];
+
+        RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(220, 400, 50, 50)];
+        [self addChild:enemy2];
 
         RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(160, 450, 50, 50)];
         [self addChild:enemy3];
@@ -52,7 +52,7 @@
     //TEST
     //add enemy node,just test.
     CGPoint point = [[touches anyObject] locationInNode:self];
-    NSLog(@"%@",NSStringFromCGPoint(point));
+    //NSLog(@"%@",NSStringFromCGPoint(point));
     RPFriendHero *fHero = (RPFriendHero*)[self childNodeWithName:FRIEND_HERO_NAME];
     [fHero moveToPoint:point];
 //    RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(point.x,point.y, 50, 50)];
