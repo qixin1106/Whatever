@@ -8,7 +8,7 @@
 
 #import "RPCharacter.h"
 #import "RPHpBarNode.h"
-
+#import "RPFriendHero.h"
 @interface RPCharacter ()
 @end
 
@@ -22,7 +22,9 @@
     {
         self.zPosition = CHARACTER_LAYER;
         self.position = CGPointMake(frame.origin.x, frame.origin.y);
-        self.size = CGSizeMake(frame.size.width, frame.size.height);        
+        self.size = CGSizeMake(frame.size.width, frame.size.height);
+//        [self showViewRangeLine];
+//        [self showAtkRangeLine];
     }
     return self;
 }
@@ -261,7 +263,13 @@
             [self changeState:States_Dead];
             //change sender state
             [sender changeTarget:nil];
+            //get gold
+            if ([sender isKindOfClass:[RPFriendHero class]])
+            {
+                NSLog(@"获得金钱");
+            }
         }
+        
     }
 }
 

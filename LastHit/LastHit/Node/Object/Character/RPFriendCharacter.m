@@ -40,8 +40,6 @@
         self.minAtk = 19;
         self.armor = 2;
         
-        [self showViewRangeLine];
-        [self showAtkRangeLine];
         
         //血条
         self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend];

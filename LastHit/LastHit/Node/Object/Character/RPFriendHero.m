@@ -38,8 +38,6 @@
         self.minAtk = 25;//最小攻击
         self.armor = 2;//护甲(暂时没用)
         
-        [self showViewRangeLine];
-        [self showAtkRangeLine];
         
         //血条
         self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend];

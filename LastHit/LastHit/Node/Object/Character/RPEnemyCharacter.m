@@ -34,15 +34,12 @@
         self.atkInterval = 1.3;
         self.viewRange = 200;
         self.atkRange = 100;
-        self.moveSpeed = 30;
+        self.moveSpeed = 0;
         self.maxHp = 500;
         self.curHp = self.maxHp;
         self.maxAtk = 23;
         self.minAtk = 19;
         self.armor = 2;
-
-        [self showViewRangeLine];
-        [self showAtkRangeLine];
         
         //血条
         self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Eneny];
