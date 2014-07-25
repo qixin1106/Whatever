@@ -40,21 +40,24 @@
         self.minAtk = 19;
         self.armor = 2;
         
-        
-        //血条
-        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend];
-        self.hpBarNode.position = CGPointMake(-self.size.width*0.5,
-                                              self.size.height*0.5+5);
-        [self addChild:self.hpBarNode];
-
     }
     return self;
 }
 
 
+
 #pragma mark - Update
 - (void)update:(NSTimeInterval)currentTime
 {
+    if (!self.hpBarNode)
+    {
+        //血条
+        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend];
+        [self.scene addChild:self.hpBarNode];
+    }
+    self.hpBarNode.position = CGPointMake(self.position.x-self.size.width*0.5,
+                                          self.position.y+self.size.height*0.5+5);
+
     [super update:currentTime];
     [self findTargetWithName:[RPEnemyCharacter getNodeName]];
 }

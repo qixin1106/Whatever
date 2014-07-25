@@ -263,6 +263,8 @@
             [self changeState:States_Dead];
             //change sender state
             [sender changeTarget:nil];
+            //remove HP Bar
+            [self.hpBarNode removeFromParent];
             //get gold
             if ([sender isKindOfClass:[RPFriendHero class]])
             {
