@@ -243,6 +243,7 @@
  */
 - (void)update:(NSTimeInterval)currentTime
 {
+    //change state if not target
     if (!self.target)
     {
         [self changeState:States_Move];
@@ -255,12 +256,14 @@
         [self attackTarget];
         self.lastTime = currentTime;
     }
+
     //control direction
     if (self.target)
     {
         self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
                                                    targetPosition:self.target.position];
     }
+    
     //move
     [self moveToTarget];
 
