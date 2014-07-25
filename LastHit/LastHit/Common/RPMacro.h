@@ -35,6 +35,7 @@
 
 #define FRIEND_NAME @"FRIEND_NAME"
 #define ENEMY_NAME @"ENEMY_NAME"
+#define FRIEND_HERO_NAME @"FRIEND_HERO_NAME"
 
 /******************************************************************************/
 

@@ -12,8 +12,9 @@
 typedef enum{
     States_Stop=0,
     States_Atk=1,
-    States_Move=2,
-    States_Dead=3
+    States_Find=2,
+    States_Dead=3,
+    States_Move
 }States;
 
 @class RPHpBarNode;
@@ -43,7 +44,8 @@ typedef enum{
 
 - (void)update:(NSTimeInterval)currentTime;//刷新
 - (void)findTargetWithName:(NSString*)name;//找目标
-- (void)moveToTarget;//移动
+- (void)moveToTarget;//移动到目标
+- (void)moveToPoint:(CGPoint)point;//移动到某坐标
 - (void)attackTarget;//攻击
 
 - (void)changeState:(States)state;

@@ -45,10 +45,21 @@
  */
 - (void)findTargetWithName:(NSString*)name
 {
-    if (!self.target)
+    //check target over distance
+    if (self.target)
+    {
+        CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
+                                                       targetPosition:self.target.position];
+        if (self.viewRange<distance)
+        {
+            [self changeTarget:nil];
+        }
+    }
+    //find target
+    if (!self.target&&self.state!=States_Move)
     {
         __block RPCharacter *nearCharacter;
-        __block CGFloat nearDistance = self.viewRange+1;
+        __block CGFloat nearDistance = self.viewRange;
         [self.scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
             RPCharacter *character = (RPCharacter*)node;
             CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
@@ -60,7 +71,7 @@
             }
         }];
 
-        if (nearDistance<=self.viewRange)
+        if (nearDistance<=self.viewRange && nearCharacter)
         {
             //discover target
             [self changeTarget:nearCharacter];
@@ -68,7 +79,7 @@
         else
         {
             //Can't attack
-            [self changeState:States_Move];
+            [self changeState:States_Find];
             [self changeTarget:nil];
         }
     }
@@ -83,7 +94,7 @@
  */
 - (void)moveToTarget
 {
-    if (self.state == States_Move && self.target)
+    if (self.state == States_Find && self.target)
     {
         CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                        targetPosition:self.target.position];
@@ -98,15 +109,31 @@
         else
         {
             //can move to target
-            [self changeState:States_Move];
+            [self changeState:States_Find];
         }
-    }
-    if (self.state != States_Move)
-    {
-        [self removeAllActions];
     }
 }
 
+/*!
+ *  移动Node,该方法会改变状态为States_Move,该状态下属于强制移动,并取消target,移动结束后继续寻找目标
+ *
+ *  @param point 移动到该点
+ *
+ *  @since 1.0
+ */
+- (void)moveToPoint:(CGPoint)point
+{
+    [self changeState:States_Move];
+    [self changeTarget:nil];
+    CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
+                                                   targetPosition:point];
+    self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
+                                               targetPosition:point];
+    SKAction *run = [SKAction moveTo:point duration:distance/self.moveSpeed];
+    [self runAction:run completion:^{
+        [self changeState:States_Find];
+    }];
+}
 
 
 
@@ -138,6 +165,7 @@
     if (self.state!=state)
     {
         self.state=state;
+        [self removeAllActions];
         switch (self.state)
         {
             case States_Atk:
@@ -149,11 +177,10 @@
             {
                 NSLog(@"[%@]祖国万岁",self.nickname);
                 self.target = nil;
-                [self removeAllActions];
                 [self removeFromParent];
                 break;
             }
-            case States_Move:
+            case States_Find:
             {
                 NSLog(@"[%@]为了部落",self.nickname);
                 break;
@@ -161,6 +188,11 @@
             case States_Stop:
             {
                 NSLog(@"[%@]Stop",self.nickname);
+                break;
+            }
+            case States_Move:
+            {
+                NSLog(@"[%@]Work Work",self.nickname);
                 break;
             }
             default:
@@ -183,16 +215,10 @@
     if (self.target != target)
     {
         self.target = target;
-        //Miss target
-        if (!self.target)
-        {
-            [self removeAllActions];
-        }
-        else
-        {
-            //Find a Target
-            //NSLog(@"Fresh meat,Hahaha!");
-        }
+    }
+    if (!self.target)
+    {
+        [self removeAllActions];
     }
 }
 
@@ -215,14 +241,14 @@
         //refresh HpBar
         if (self.hpBarNode)
         {
-            NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.nickname,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
+            //NSLog(@"[%@] HP:%.0f/%.0f(%.2f%%)",self.nickname,self.curHp,self.maxHp,(self.curHp/self.maxHp)*100);
             [self.hpBarNode changeWidthWithHpRate:self.curHp/self.maxHp];
         }
        
         //low hp alert
         if (![RPComFunction isHpSafe:self])
         {
-            NSLog(@"[%@]要死了,要死了,要死了",self.nickname);
+            //NSLog(@"[%@]要死了,要死了,要死了",self.nickname);
         }
        
         //dead
@@ -247,10 +273,10 @@
  */
 - (void)update:(NSTimeInterval)currentTime
 {
-    //change state if not target
-    if (!self.target)
+    //change state if not target and state is not Move
+    if (!self.target && self.state!=States_Move)
     {
-        [self changeState:States_Move];
+        [self changeState:States_Find];
     }
     
     //contrl atk

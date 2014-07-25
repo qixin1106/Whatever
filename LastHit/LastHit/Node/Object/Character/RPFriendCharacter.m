@@ -27,7 +27,7 @@
         self.texture = [SKTexture textureWithImageNamed:@"f.png"];
         self.name = FRIEND_NAME;
         self.nickname = @"友方战士";
-        self.state = States_Move;
+        self.state = States_Find;
         self.lastTime = 0;
 
         self.atkInterval = 1.0;

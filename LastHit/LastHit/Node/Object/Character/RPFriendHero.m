@@ -13,7 +13,7 @@
 
 + (NSString*)getNodeName
 {
-    return FRIEND_NAME;
+    return FRIEND_HERO_NAME;
 }
 
 
@@ -23,20 +23,20 @@
     if (self)
     {
         self.texture = [SKTexture textureWithImageNamed:@"xiaoqiang.png"];
-        self.name = FRIEND_NAME;
+        self.name = FRIEND_HERO_NAME;
         self.nickname = @"英雄小强";
-        self.state = States_Move;
+        self.state = States_Find;
         self.lastTime = 0;
         
-        self.atkInterval = 0.5;
-        self.viewRange = 300;
-        self.atkRange = 100;
-        self.moveSpeed = 30;
-        self.maxHp = 2000;
-        self.curHp = self.maxHp;
-        self.maxAtk = 32;
-        self.minAtk = 25;
-        self.armor = 2;
+        self.atkInterval = 0.5;//攻击间隔
+        self.viewRange = 200;//视野
+        self.atkRange = 100;//攻击距离
+        self.moveSpeed = 60;//移动速度
+        self.maxHp = 2000;//最大血量
+        self.curHp = self.maxHp;//当前血量
+        self.maxAtk = 32;//最大攻击
+        self.minAtk = 25;//最小攻击
+        self.armor = 2;//护甲(暂时没用)
         
         [self showViewRangeLine];
         [self showAtkRangeLine];

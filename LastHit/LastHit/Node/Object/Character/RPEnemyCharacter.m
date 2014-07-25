@@ -8,6 +8,7 @@
 
 #import "RPEnemyCharacter.h"
 #import "RPFriendCharacter.h"
+#import "RPFriendHero.h"
 #import "RPHpBarNode.h"
 
 @implementation RPEnemyCharacter
@@ -26,15 +27,14 @@
         self.texture = [SKTexture textureWithImageNamed:@"e.png"];
         self.name = ENEMY_NAME;
         self.nickname = @"敌方战士";
-        self.state = States_Move;
+        self.state = States_Find;
         self.zRotation = M_PI;
 
         self.lastTime = 0;
         self.atkInterval = 1.3;
-        self.viewRange = 300;
+        self.viewRange = 200;
         self.atkRange = 100;
         self.moveSpeed = 30;
-
         self.maxHp = 500;
         self.curHp = self.maxHp;
         self.maxAtk = 23;
@@ -60,8 +60,8 @@
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
+    [self findTargetWithName:[RPFriendHero getNodeName]];
     [self findTargetWithName:[RPFriendCharacter getNodeName]];
-    NSLog(@"%@",self.target);
 }
 
 
