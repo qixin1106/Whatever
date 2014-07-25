@@ -39,12 +39,12 @@ typedef enum{
 
 
 - (instancetype)initWithFrame:(CGRect)frame;
-
 + (NSString*)getNodeName;
-- (void)update:(NSTimeInterval)currentTime;
-- (void)findTargetWithName:(NSString*)name;
-- (void)moveToTarget;
-- (void)attackTarget;
+
+- (void)update:(NSTimeInterval)currentTime;//刷新
+- (void)findTargetWithName:(NSString*)name;//找目标
+- (void)moveToTarget;//移动
+- (void)attackTarget;//攻击
 
 - (void)changeState:(States)state;
 - (void)changeTarget:(RPCharacter *)target;

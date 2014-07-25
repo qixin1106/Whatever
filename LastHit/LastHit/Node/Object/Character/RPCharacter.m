@@ -39,8 +39,7 @@
 /*!
  *  寻找视野内的目标,update每次都会调用
  *
- *  @param name  目标的name
- *  @param scene 游戏场景,用来遍历
+ *  @param name  目标Node的name,用来遍历
  *
  *  @since 1.0
  */
@@ -52,19 +51,19 @@
             RPCharacter *character = (RPCharacter*)node;
             CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                            targetPosition:character.position];
-            if (distance<=self.viewRange)
+            if (!self.target)
             {
-                //discover target
-                if (!self.target)
+                if (distance<=self.viewRange)
                 {
+                    //discover target
                     [self changeTarget:character];
                 }
-            }
-            else
-            {
-                //Can't attack
-                [self changeState:States_Move];
-                [self changeTarget:nil];
+                else
+                {
+                    //Can't attack
+                    [self changeState:States_Move];
+                    [self changeTarget:nil];
+                }
             }
         }];
     }
@@ -263,7 +262,7 @@
         self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
                                                    targetPosition:self.target.position];
     }
-    
+
     //move
     [self moveToTarget];
 

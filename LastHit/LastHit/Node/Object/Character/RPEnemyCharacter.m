@@ -60,8 +60,8 @@
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
-    NSLog(@"%@",self.target);
     [self findTargetWithName:[RPFriendCharacter getNodeName]];
+    NSLog(@"%@",self.target);
 }
 
 
