@@ -47,25 +47,29 @@
 {
     if (!self.target)
     {
+        __block RPCharacter *nearCharacter;
+        __block CGFloat nearDistance = self.viewRange+1;
         [self.scene enumerateChildNodesWithName:name usingBlock:^(SKNode *node, BOOL *stop) {
             RPCharacter *character = (RPCharacter*)node;
             CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
                                                            targetPosition:character.position];
-            if (!self.target)
+            if (nearDistance>distance)
             {
-                if (distance<=self.viewRange)
-                {
-                    //discover target
-                    [self changeTarget:character];
-                }
-                else
-                {
-                    //Can't attack
-                    [self changeState:States_Move];
-                    [self changeTarget:nil];
-                }
+                nearDistance = distance;
+                nearCharacter = character;
             }
         }];
+        if (nearDistance<=self.viewRange)
+        {
+            //discover target
+            [self changeTarget:nearCharacter];
+        }
+        else
+        {
+            //Can't attack
+            [self changeState:States_Move];
+            [self changeTarget:nil];
+        }
     }
 }
 
