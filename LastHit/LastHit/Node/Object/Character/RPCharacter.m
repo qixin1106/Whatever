@@ -37,7 +37,7 @@
 
 #pragma mark - Find target
 /*!
- *  寻找视野内的目标,update每次都会调用
+ *  寻找视野内的目标,如果没有目标,update每次都会调用,遍历所有目标,比对出最近的一个,进行锁定.
  *
  *  @param name  目标Node的name,用来遍历
  *
