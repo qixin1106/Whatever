@@ -59,6 +59,7 @@
                 nearCharacter = character;
             }
         }];
+
         if (nearDistance<=self.viewRange)
         {
             //discover target
