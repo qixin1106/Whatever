@@ -283,7 +283,7 @@
             //get gold
             if ([sender isKindOfClass:[RPFriendHero class]])
             {
-                NSLog(@"[%@]获得金钱",sender.nickname);
+                NSLog(@"[%@]谁叫你站着不动,呆瓜",sender.nickname);
             }
             if ([self isKindOfClass:[RPFriendHero class]])
             {
