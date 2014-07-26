@@ -9,6 +9,8 @@
 #import "RPCharacter.h"
 #import "RPHpBarNode.h"
 #import "RPFriendHero.h"
+#import "RPFriendTower.h"
+#import "RPEnemyTower.h"
 @interface RPCharacter ()
 @end
 
@@ -243,6 +245,17 @@
     {
         self.curHp = (curHp<0)?0:curHp;
         
+        //change target logic if you by fire
+        if (self.target && self.state == States_Find)
+        {
+            CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
+                                                           targetPosition:self.target.position];
+            if (self.atkRange<distance)
+            {
+                [self changeTarget:sender];
+            }
+        }
+        
         //refresh HpBar
         if (self.hpBarNode)
         {
@@ -265,13 +278,32 @@
             [sender changeTarget:nil];
             //remove HP Bar
             [self.hpBarNode removeFromParent];
+            
+            //这里逻辑可以抽出
             //get gold
             if ([sender isKindOfClass:[RPFriendHero class]])
             {
                 NSLog(@"[%@]获得金钱",sender.nickname);
             }
+            if ([self isKindOfClass:[RPFriendHero class]])
+            {
+                self.scene.view.paused = YES;
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+            if ([self isKindOfClass:[RPFriendTower class]])
+            {
+                self.scene.view.paused = YES;
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+            if ([self isKindOfClass:[RPEnemyTower class]])
+            {
+                self.scene.view.paused = YES;
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Win" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
         }
-        
     }
 }
 

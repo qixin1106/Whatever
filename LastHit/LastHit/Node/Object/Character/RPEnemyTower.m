@@ -32,7 +32,7 @@
         
         self.atkInterval = 1.2;//攻击间隔
         self.viewRange = 200;//视野
-        self.atkRange = 200;//攻击距离
+        self.atkRange = 100;//攻击距离
         self.moveSpeed = 0;//移动速度
         self.maxHp = 1200;//最大血量
         self.curHp = self.maxHp;//当前血量

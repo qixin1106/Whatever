@@ -16,31 +16,29 @@
 
 @implementation RPGameScene
 
-
+int rand()
+{
+    return (arc4random()%50)-25;
+}
 - (void)creatSoldier
 {
     //friend
-    RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 150, 50, 50)];
+    RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100+rand(), 150+rand(), 50, 50)];
     [self addChild:friend];
     
-    RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
+    RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220+rand(), 150+rand(), 50, 50)];
     [self addChild:friend2];
     
-    RPFriendCharacter *friend3 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
-    [self addChild:friend3];
 
     
-    
-    
-    
     //enemy
-    RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(100, 400, 50, 50)];
+    RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(100+rand(), 400+rand(), 50, 50)];
     [self addChild:enemy];
     
-    RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(220, 400, 50, 50)];
+    RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(220+rand(), 400+rand(), 50, 50)];
     [self addChild:enemy2];
     
-    RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(160, 450, 50, 50)];
+    RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(160+rand(), 450+rand(), 50, 50)];
     [self addChild:enemy3];
 
 }
