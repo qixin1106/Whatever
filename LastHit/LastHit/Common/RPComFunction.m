@@ -8,6 +8,9 @@
 
 #import "RPComFunction.h"
 #import "RPCharacter.h"
+#import "RPGameScene.h"
+#import "RPEnemyCharacter.h"
+#import "RPEnemyTower.h"
 
 @implementation RPComFunction
 
@@ -43,6 +46,26 @@
     NSString *particlePath = [[NSBundle mainBundle] pathForResource:particleName ofType:@"sks"];
     SKEmitterNode *particle = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
     return particle;
+}
+
++ (RPCharacter*)getCharacterWithPoint:(CGPoint)point scene:(RPGameScene*)scene
+{
+    NSArray *nodes = [scene nodesAtPoint:point];
+    __block RPCharacter *character;
+    [nodes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (!character)
+        {
+            if ([obj isKindOfClass:[RPEnemyCharacter class]])
+            {
+                character = (RPEnemyCharacter*)obj;
+            }
+            if ([obj isKindOfClass:[RPEnemyTower class]])
+            {
+                character = (RPEnemyTower*)obj;
+            }
+        }
+    }];
+    return character;
 }
 
 @end

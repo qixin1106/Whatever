@@ -25,8 +25,8 @@
         self.zPosition = CHARACTER_LAYER;
         self.position = CGPointMake(frame.origin.x, frame.origin.y);
         self.size = CGSizeMake(frame.size.width, frame.size.height);
-//        [self showViewRangeLine];
-//        [self showAtkRangeLine];
+        [self showViewRangeLine];
+        [self showAtkRangeLine];
     }
     return self;
 }
@@ -272,12 +272,6 @@
         //dead
         if (self.curHp<=0)
         {
-            //Dead
-            [self changeState:States_Dead];
-            //change sender state
-            [sender changeTarget:nil];
-            //remove HP Bar
-            [self.hpBarNode removeFromParent];
             
             //这里逻辑可以抽出
             //get gold
@@ -287,19 +281,28 @@
             }
             if ([self isKindOfClass:[RPFriendHero class]])
             {
+                self.scene.view.paused = YES;
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             }
             if ([self isKindOfClass:[RPFriendTower class]])
             {
+                self.scene.view.paused = YES;
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             }
             if ([self isKindOfClass:[RPEnemyTower class]])
             {
+                self.scene.view.paused = YES;
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Win" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             }
+            //Dead
+            [self changeState:States_Dead];
+            //change sender state
+            [sender changeTarget:nil];
+            //remove HP Bar
+            [self.hpBarNode removeFromParent];
         }
     }
 }
@@ -355,7 +358,7 @@
     SKShapeNode *viewRangeLine = [SKShapeNode node];
     viewRangeLine.strokeColor = RGB(255, 255, 255);
     viewRangeLine.lineWidth = 1.0f;
-    viewRangeLine.alpha = 0.5f;
+    //viewRangeLine.alpha = 0.5f;
 
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0)
                                                             radius:self.viewRange
@@ -378,7 +381,7 @@
     SKShapeNode *atkRangeLine = [SKShapeNode node];
     atkRangeLine.strokeColor = RGB(255, 0, 0);
     atkRangeLine.lineWidth = 1.0f;
-    atkRangeLine.alpha = 0.5f;
+    //atkRangeLine.alpha = 0.5f;
 
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0)
                                                             radius:self.atkRange

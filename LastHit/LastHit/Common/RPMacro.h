@@ -26,11 +26,11 @@
 
 #define MAP_LAYER 0
 #define CHARACTER_LAYER 100
-#define BULLET_LAYER 500
+#define BULLET_LAYER 101
 #define HP_BAR_LAYER 1000
 #define UI_LAYER 2000
 
-
+#define VIEW_RANGE 2000
 
 /******************************************************************************/
 

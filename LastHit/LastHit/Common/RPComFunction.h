@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @import SpriteKit;
 @class RPCharacter;
+@class RPGameScene;
 @interface RPComFunction : NSObject
 + (CGFloat)getDistanceWithYourPosition:(CGPoint)your
                       targetPosition:(CGPoint)target;
@@ -21,4 +22,6 @@
 + (BOOL)isHpSafe:(RPCharacter*)character;
 
 + (SKEmitterNode*)getParticleWithName:(NSString*)particleName;
+
++ (RPCharacter*)getCharacterWithPoint:(CGPoint)point scene:(RPGameScene*)scene;
 @end

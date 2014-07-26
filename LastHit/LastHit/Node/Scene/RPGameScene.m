@@ -45,7 +45,7 @@ int rand()
 
 
 #pragma mark - Init
--(id)initWithSize:(CGSize)size
+- (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size])
     {
@@ -53,7 +53,6 @@ int rand()
         RPMapNode *map = [[RPMapNode alloc] init];
         [self addChild:map];
 
-        
         //造兵
         [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(creatSoldier) userInfo:nil repeats:YES];
         [self creatSoldier];
@@ -95,6 +94,10 @@ int rand()
     CGPoint point = [[touches anyObject] locationInNode:self];
     RPFriendHero *fHero = (RPFriendHero*)[self childNodeWithName:FRIEND_HERO_NAME];
     [fHero moveToPoint:point];
+    
+    RPCharacter *enemy = [RPComFunction getCharacterWithPoint:point
+                                                        scene:self];
+    fHero.target = enemy;
 }
 
 

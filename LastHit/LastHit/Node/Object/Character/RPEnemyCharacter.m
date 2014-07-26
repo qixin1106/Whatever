@@ -32,7 +32,7 @@
 
         self.lastTime = 0;
         self.atkInterval = 1.0;
-        self.viewRange = 200;
+        self.viewRange = VIEW_RANGE;
         self.atkRange = 50;
         self.moveSpeed = 30;
         self.maxHp = 500;
@@ -53,15 +53,15 @@
     if (!self.hpBarNode)
     {
         //血条
-        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend width:self.size.width];
+        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Eneny width:self.size.width];
         [self.scene addChild:self.hpBarNode];
     }
     self.hpBarNode.position = CGPointMake(self.position.x-self.size.width*0.5,
                                           self.position.y+self.size.height*0.5+5);
     [super update:currentTime];
     
-    [self findTargetWithName:[RPFriendTower getNodeName]];
     [self findTargetWithName:[RPFriendCharacter getNodeName]];
+    [self findTargetWithName:[RPFriendTower getNodeName]];
     [self findTargetWithName:[RPFriendHero getNodeName]];
 }
 

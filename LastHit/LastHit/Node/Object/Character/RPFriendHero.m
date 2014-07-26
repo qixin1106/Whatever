@@ -30,7 +30,7 @@
         self.lastTime = 0;
         
         self.atkInterval = 1.0;//攻击间隔
-        self.viewRange = 200;//视野
+        self.viewRange = VIEW_RANGE;//视野
         self.atkRange = 150;//攻击距离
         self.moveSpeed = 60;//移动速度
         self.maxHp = 550;//最大血量
@@ -38,7 +38,6 @@
         self.maxAtk = 50;//最大攻击
         self.minAtk = 49;//最小攻击
         self.armor = 2;//护甲(暂时没用)
-        
     }
     return self;
 }

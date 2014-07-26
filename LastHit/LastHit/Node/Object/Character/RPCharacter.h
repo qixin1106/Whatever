@@ -33,6 +33,11 @@ typedef enum{
 @property (assign, nonatomic) CGFloat minAtk;
 @property (assign, nonatomic) CGFloat armor;
 
+@property (assign, nonatomic) NSInteger gold;//获得金钱
+@property (assign, nonatomic) NSInteger exp;//获得经验
+
+
+
 @property (assign, nonatomic) States state;
 @property (weak, nonatomic) RPCharacter *target;
 

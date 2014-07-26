@@ -49,7 +49,7 @@
     if (!self.hpBarNode)
     {
         //血条
-        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend width:self.size.width];
+        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Eneny width:self.size.width];
         [self.scene addChild:self.hpBarNode];
     }
     self.hpBarNode.position = CGPointMake(self.position.x-self.size.width*0.5,
@@ -57,8 +57,9 @@
     
     
     [super update:currentTime];
-    [self findTargetWithName:[RPFriendCharacter getNodeName]];
+    
     [self findTargetWithName:[RPFriendHero getNodeName]];
+    [self findTargetWithName:[RPFriendCharacter getNodeName]];
 }
 
 
