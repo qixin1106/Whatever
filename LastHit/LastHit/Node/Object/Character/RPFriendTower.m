@@ -6,10 +6,11 @@
 //  Copyright (c) 2014年 Research&PS. All rights reserved.
 //
 
-#import "RPFriendHero.h"
+#import "RPFriendTower.h"
 #import "RPHpBarNode.h"
 #import "RPEnemyCharacter.h"
-@implementation RPFriendHero
+
+@implementation RPFriendTower
 
 + (NSString*)getNodeName
 {
@@ -37,7 +38,6 @@
         self.maxAtk = 50;//最大攻击
         self.minAtk = 49;//最小攻击
         self.armor = 2;//护甲(暂时没用)
-        
     }
     return self;
 }
@@ -53,8 +53,8 @@
     }
     self.hpBarNode.position = CGPointMake(self.position.x-self.size.width*0.5,
                                           self.position.y+self.size.height*0.5+5);
-
-
+    
+    
     [super update:currentTime];
     [self findTargetWithName:[RPEnemyCharacter getNodeName]];
 }

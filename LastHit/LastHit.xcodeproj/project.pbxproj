@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		991A5301197D82AE003160FA /* RPComFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 991A5300197D82AE003160FA /* RPComFunction.m */; };
+		9921F41E19838EF5003F7806 /* RPFriendTower.m in Sources */ = {isa = PBXBuildFile; fileRef = 9921F41D19838EF5003F7806 /* RPFriendTower.m */; };
+		9921F42319839629003F7806 /* ebase.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F41F19839629003F7806 /* ebase.png */; };
+		9921F42419839629003F7806 /* et.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F42019839629003F7806 /* et.png */; };
+		9921F42519839629003F7806 /* fbase.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F42119839629003F7806 /* fbase.png */; };
+		9921F42619839629003F7806 /* ft.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F42219839629003F7806 /* ft.png */; };
 		9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959D1AC1981470D0054FEDB /* RPHpBarNode.m */; };
 		9974BBDB198174140073C213 /* RPMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9974BBDA198174140073C213 /* RPMapNode.m */; };
 		9974BBDE198179280073C213 /* RPFriendHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 9974BBDD198179280073C213 /* RPFriendHero.m */; };
@@ -52,6 +57,12 @@
 /* Begin PBXFileReference section */
 		991A52FF197D82AE003160FA /* RPComFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPComFunction.h; sourceTree = "<group>"; };
 		991A5300197D82AE003160FA /* RPComFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPComFunction.m; sourceTree = "<group>"; };
+		9921F41C19838EF5003F7806 /* RPFriendTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPFriendTower.h; sourceTree = "<group>"; };
+		9921F41D19838EF5003F7806 /* RPFriendTower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPFriendTower.m; sourceTree = "<group>"; };
+		9921F41F19839629003F7806 /* ebase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ebase.png; sourceTree = "<group>"; };
+		9921F42019839629003F7806 /* et.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = et.png; sourceTree = "<group>"; };
+		9921F42119839629003F7806 /* fbase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fbase.png; sourceTree = "<group>"; };
+		9921F42219839629003F7806 /* ft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ft.png; sourceTree = "<group>"; };
 		9959D1AB1981470D0054FEDB /* RPHpBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPHpBarNode.h; sourceTree = "<group>"; };
 		9959D1AC1981470D0054FEDB /* RPHpBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPHpBarNode.m; sourceTree = "<group>"; };
 		9959D1AE1981567A0054FEDB /* RPGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGlobal.h; sourceTree = "<group>"; };
@@ -231,6 +242,7 @@
 		9975D689197D5A54005971DE /* Node */ = {
 			isa = PBXGroup;
 			children = (
+				99FB8CFD1982D050007A1781 /* UI */,
 				D2BD66AA197E05AD00B95A7A /* Object */,
 				9975D692197D5B79005971DE /* Scene */,
 			);
@@ -258,6 +270,13 @@
 				9959D1AE1981567A0054FEDB /* RPGlobal.h */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		99FB8CFD1982D050007A1781 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		D22E47FB1982113700AF72B0 /* Effect */ = {
@@ -290,6 +309,10 @@
 		D27282DD197E4B7600D17827 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				9921F41F19839629003F7806 /* ebase.png */,
+				9921F42019839629003F7806 /* et.png */,
+				9921F42119839629003F7806 /* fbase.png */,
+				9921F42219839629003F7806 /* ft.png */,
 				9974BBDF19817BF40073C213 /* xiaoqiang.png */,
 				9974BBE019817BF40073C213 /* xiaoyu.png */,
 				D27282E0197E4B8E00D17827 /* e.png */,
@@ -319,6 +342,8 @@
 				D2BD66B6197E08DA00B95A7A /* RPEnemyCharacter.m */,
 				9974BBDC198179280073C213 /* RPFriendHero.h */,
 				9974BBDD198179280073C213 /* RPFriendHero.m */,
+				9921F41C19838EF5003F7806 /* RPFriendTower.h */,
+				9921F41D19838EF5003F7806 /* RPFriendTower.m */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -400,14 +425,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9921F42419839629003F7806 /* et.png in Resources */,
 				D27282E2197E4B8E00D17827 /* e.png in Resources */,
 				9975D652197D57FF005971DE /* InfoPlist.strings in Resources */,
 				9974BBE219817BF40073C213 /* xiaoyu.png in Resources */,
 				D26EB10E19822688008E9D86 /* Rocket.sks in Resources */,
 				D27282E3197E4B8E00D17827 /* f.png in Resources */,
+				9921F42319839629003F7806 /* ebase.png in Resources */,
+				9921F42519839629003F7806 /* fbase.png in Resources */,
 				D26EB10F19822688008E9D86 /* spark.png in Resources */,
 				9975D665197D57FF005971DE /* Images.xcassets in Resources */,
 				9974BBE119817BF40073C213 /* xiaoqiang.png in Resources */,
+				9921F42619839629003F7806 /* ft.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +462,7 @@
 				D22E47FF198211C500AF72B0 /* RPBaseEffect.m in Sources */,
 				991A5301197D82AE003160FA /* RPComFunction.m in Sources */,
 				9974BBDB198174140073C213 /* RPMapNode.m in Sources */,
+				9921F41E19838EF5003F7806 /* RPFriendTower.m in Sources */,
 				9975D654197D57FF005971DE /* main.m in Sources */,
 				9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */,
 				D2BD66B7197E08DA00B95A7A /* RPEnemyCharacter.m in Sources */,

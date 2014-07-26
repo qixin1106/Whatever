@@ -15,7 +15,7 @@
 
 + (NSString*)getNodeName
 {
-    return ENEMY_NAME;
+    return ENEMY_SOLDIER_NAME;
 }
 
 
@@ -25,7 +25,7 @@
     if (self)
     {
         self.texture = [SKTexture textureWithImageNamed:@"e.png"];
-        self.name = ENEMY_NAME;
+        self.name = ENEMY_SOLDIER_NAME;
         self.nickname = @"敌方战士";
         self.state = States_Find;
         self.zRotation = M_PI;

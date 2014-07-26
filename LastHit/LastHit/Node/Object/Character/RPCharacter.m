@@ -268,7 +268,7 @@
             //get gold
             if ([sender isKindOfClass:[RPFriendHero class]])
             {
-                NSLog(@"获得金钱");
+                NSLog(@"[%@]获得金钱",sender.nickname);
             }
         }
         

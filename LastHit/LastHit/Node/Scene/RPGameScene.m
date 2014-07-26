@@ -11,6 +11,7 @@
 #import "RPEnemyCharacter.h"
 #import "RPFriendHero.h"
 #import "RPMapNode.h"
+
 @implementation RPGameScene
 
 #pragma mark - Init
@@ -21,6 +22,17 @@
         //map
         RPMapNode *map = [[RPMapNode alloc] init];
         [self addChild:map];
+        
+        //UI
+        SKLabelNode *gold = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        gold.zPosition = UI_LAYER;
+        gold.text = @"Gold 0";
+        gold.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        gold.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+        gold.position = CGPointMake(0, SCREEN_HEIGHT);
+        gold.fontSize = 17.0;
+        gold.fontColor = [SKColor whiteColor];
+        [self addChild:gold];
         
         
         //Test
@@ -50,23 +62,21 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //TEST
-    //add enemy node,just test.
+    //move
     CGPoint point = [[touches anyObject] locationInNode:self];
-    //NSLog(@"%@",NSStringFromCGPoint(point));
     RPFriendHero *fHero = (RPFriendHero*)[self childNodeWithName:FRIEND_HERO_NAME];
     [fHero moveToPoint:point];
-//    RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(point.x,point.y, 50, 50)];
-//    [self addChild:enemy];
 }
+
 
 #pragma mark - Update
 - (void)update:(NSTimeInterval)currentTime
 {
-    [self enumerateChildNodesWithName:ENEMY_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+    [self enumerateChildNodesWithName:ENEMY_SOLDIER_NAME usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
         [character update:currentTime];
     }];
-    [self enumerateChildNodesWithName:FRIEND_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+    [self enumerateChildNodesWithName:FRIEND_SOLDIER_NAME usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
         [character update:currentTime];
     }];
