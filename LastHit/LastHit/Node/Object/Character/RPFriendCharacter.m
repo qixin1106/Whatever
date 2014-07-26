@@ -32,7 +32,7 @@
 
         self.atkInterval = 1.0;
         self.viewRange = 300;
-        self.atkRange = 100;
+        self.atkRange = 50;
         self.moveSpeed = 30;
         self.maxHp = 500;
         self.curHp = self.maxHp;

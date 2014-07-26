@@ -14,7 +14,8 @@
     self = [super init];
     if (self)
     {
-        self.color = RGB(12, 12, 50);
+//        self.color = RGB(12, 12, 50);
+        self.texture = [SKTexture textureWithImageNamed:@"bg.png"];
         self.anchorPoint = CGPointMake(0, 0);
         self.size = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
         self.zPosition = MAP_LAYER;
