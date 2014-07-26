@@ -24,11 +24,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillLayoutSubviews
@@ -47,6 +55,18 @@
     
     // Present the scene.
     [skView presentScene:scene];
+}
+
+- (void)didBecomeActive
+{
+    SKView * skView = (SKView *)self.view;
+    skView.paused = NO;
+}
+
+- (void)willResignActive
+{
+    SKView * skView = (SKView *)self.view;
+    skView.paused = YES;
 }
 
 
