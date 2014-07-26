@@ -38,9 +38,9 @@
     return (character.curHp/character.maxHp)>0.2?YES:NO;
 }
 
-+ (SKEmitterNode*)getCustomParticleWithName:(NSString*)particleName
++ (SKEmitterNode*)getParticleWithName:(NSString*)particleName
 {
-    NSString *particlePath = [[NSBundle mainBundle] pathForResource:@"particleName" ofType:@"sks"];
+    NSString *particlePath = [[NSBundle mainBundle] pathForResource:particleName ofType:@"sks"];
     SKEmitterNode *particle = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
     return particle;
 }

@@ -287,20 +287,17 @@
             }
             if ([self isKindOfClass:[RPFriendHero class]])
             {
-                self.scene.view.paused = YES;
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             }
             if ([self isKindOfClass:[RPFriendTower class]])
             {
-                self.scene.view.paused = YES;
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Lose" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             }
             if ([self isKindOfClass:[RPEnemyTower class]])
             {
-                self.scene.view.paused = YES;
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Win" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You Win" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             }
         }

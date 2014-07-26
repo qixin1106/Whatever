@@ -20,5 +20,5 @@
 
 + (BOOL)isHpSafe:(RPCharacter*)character;
 
-+ (SKEmitterNode*)getCustomParticleWithName:(NSString*)particleName;
++ (SKEmitterNode*)getParticleWithName:(NSString*)particleName;
 @end
