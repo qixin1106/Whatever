@@ -10,6 +10,6 @@
 
 
 @interface RPHpBarNode : SKSpriteNode
-- (instancetype)initWithCamp:(Camp)camp;
+- (instancetype)initWithCamp:(Camp)camp width:(CGFloat)width;
 - (void)changeWidthWithHpRate:(CGFloat)hpRate;
 @end

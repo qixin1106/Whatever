@@ -18,20 +18,20 @@
 
 @implementation RPHpBarNode
 
-- (instancetype)initWithCamp:(Camp)camp
+- (instancetype)initWithCamp:(Camp)camp width:(CGFloat)width
 {
     self = [super init];
     if (self)
     {
         self.zPosition = HP_BAR_LAYER;
-        self.size = CGSizeMake(HPBAR_WIDTH, HPBAR_HEIGHT);
+        self.size = CGSizeMake(width, HPBAR_HEIGHT);
         self.anchorPoint = CGPointMake(0, 1);
         self.color = RGB(255, 255, 255);
         
         
         self.curHpBar = [SKSpriteNode node];
         self.curHpBar.anchorPoint = CGPointMake(0, 1);
-        self.curHpBar.size = CGSizeMake(HPBAR_WIDTH, HPBAR_HEIGHT);
+        self.curHpBar.size = CGSizeMake(width, HPBAR_HEIGHT);
         if (camp==Camp_Friend)
         {
             self.curHpBar.color = RGB(12, 233, 12);
@@ -51,7 +51,7 @@
 
 - (void)changeWidthWithHpRate:(CGFloat)hpRate;
 {
-    self.curHpBar.size = CGSizeMake(hpRate*HPBAR_WIDTH, 2);
+    self.curHpBar.size = CGSizeMake(hpRate*self.size.width, 2);
 }
 
 @end

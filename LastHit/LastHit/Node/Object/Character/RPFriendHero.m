@@ -9,6 +9,7 @@
 #import "RPFriendHero.h"
 #import "RPHpBarNode.h"
 #import "RPEnemyCharacter.h"
+#import "RPEnemyTower.h"
 @implementation RPFriendHero
 
 + (NSString*)getNodeName
@@ -32,7 +33,7 @@
         self.viewRange = 200;//视野
         self.atkRange = 100;//攻击距离
         self.moveSpeed = 60;//移动速度
-        self.maxHp = 2000;//最大血量
+        self.maxHp = 550;//最大血量
         self.curHp = self.maxHp;//当前血量
         self.maxAtk = 50;//最大攻击
         self.minAtk = 49;//最小攻击
@@ -48,7 +49,7 @@
     if (!self.hpBarNode)
     {
         //血条
-        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend];
+        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend width:self.size.width];
         [self.scene addChild:self.hpBarNode];
     }
     self.hpBarNode.position = CGPointMake(self.position.x-self.size.width*0.5,
@@ -57,6 +58,7 @@
 
     [super update:currentTime];
     [self findTargetWithName:[RPEnemyCharacter getNodeName]];
+    [self findTargetWithName:[RPEnemyTower getNodeName]];
 }
 
 

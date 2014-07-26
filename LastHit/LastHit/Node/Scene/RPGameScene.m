@@ -11,8 +11,40 @@
 #import "RPEnemyCharacter.h"
 #import "RPFriendHero.h"
 #import "RPMapNode.h"
+#import "RPFriendTower.h"
+#import "RPEnemyTower.h"
 
 @implementation RPGameScene
+
+
+- (void)creatSoldier
+{
+    //friend
+    RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 150, 50, 50)];
+    [self addChild:friend];
+    
+    RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
+    [self addChild:friend2];
+    
+    RPFriendCharacter *friend3 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
+    [self addChild:friend3];
+
+    
+    
+    
+    
+    //enemy
+    RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(100, 400, 50, 50)];
+    [self addChild:enemy];
+    
+    RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(220, 400, 50, 50)];
+    [self addChild:enemy2];
+    
+    RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(160, 450, 50, 50)];
+    [self addChild:enemy3];
+
+}
+
 
 #pragma mark - Init
 -(id)initWithSize:(CGSize)size
@@ -22,6 +54,24 @@
         //map
         RPMapNode *map = [[RPMapNode alloc] init];
         [self addChild:map];
+
+        
+        //造兵
+        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(creatSoldier) userInfo:nil repeats:YES];
+        [self creatSoldier];
+        
+        //造塔
+        RPFriendTower *ftower = [[RPFriendTower alloc] initWithFrame:CGRectMake(60, 60, 80, 80)];
+        [self addChild:ftower];
+        
+        RPEnemyTower *etower = [[RPEnemyTower alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-60,SCREEN_HEIGHT-60, 80, 80)];
+        [self addChild:etower];
+        
+        //英雄
+        RPFriendHero *fHero = [[RPFriendHero alloc] initWithFrame:CGRectMake(160, 100, 50, 50)];
+        [self addChild:fHero];
+
+        
         
         //UI
         SKLabelNode *gold = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
@@ -34,25 +84,6 @@
         gold.fontColor = [SKColor whiteColor];
         [self addChild:gold];
         
-        
-        //Test
-        RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100, 150, 50, 50)];
-        [self addChild:friend];
-        
-        RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(220, 150, 50, 50)];
-        [self addChild:friend2];
-
-        RPFriendHero *fHero = [[RPFriendHero alloc] initWithFrame:CGRectMake(160, 100, 50, 50)];
-        [self addChild:fHero];
-
-        RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(100, 400, 50, 50)];
-        [self addChild:enemy];
-
-        RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(220, 400, 50, 50)];
-        [self addChild:enemy2];
-
-        RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(160, 450, 50, 50)];
-        [self addChild:enemy3];
     }
     return self;
 }
@@ -72,7 +103,7 @@
 #pragma mark - Update
 - (void)update:(NSTimeInterval)currentTime
 {
-    [self enumerateChildNodesWithName:ENEMY_SOLDIER_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+    [self enumerateChildNodesWithName:FRIEND_TOWER_NAME usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
         [character update:currentTime];
     }];
@@ -81,6 +112,17 @@
         [character update:currentTime];
     }];
     [self enumerateChildNodesWithName:FRIEND_HERO_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+        RPCharacter *character = (RPCharacter*)node;
+        [character update:currentTime];
+    }];
+    
+    
+    
+    [self enumerateChildNodesWithName:ENEMY_TOWER_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+        RPCharacter *character = (RPCharacter*)node;
+        [character update:currentTime];
+    }];
+    [self enumerateChildNodesWithName:ENEMY_SOLDIER_NAME usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
         [character update:currentTime];
     }];

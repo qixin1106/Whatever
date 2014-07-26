@@ -6,15 +6,16 @@
 //  Copyright (c) 2014年 Research&PS. All rights reserved.
 //
 
-#import "RPFriendTower.h"
+#import "RPEnemyTower.h"
 #import "RPHpBarNode.h"
-#import "RPEnemyCharacter.h"
+#import "RPFriendCharacter.h"
+#import "RPFriendHero.h"
 
-@implementation RPFriendTower
+@implementation RPEnemyTower
 
 + (NSString*)getNodeName
 {
-    return FRIEND_TOWER_NAME;
+    return ENEMY_TOWER_NAME;
 }
 
 
@@ -23,9 +24,9 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.texture = [SKTexture textureWithImageNamed:@"ft.png"];
-        self.name = FRIEND_TOWER_NAME;
-        self.nickname = @"友方塔";
+        self.texture = [SKTexture textureWithImageNamed:@"et.png"];
+        self.name = ENEMY_TOWER_NAME;
+        self.nickname = @"敌方塔";
         self.state = States_Find;
         self.lastTime = 0;
         
@@ -56,7 +57,8 @@
     
     
     [super update:currentTime];
-    [self findTargetWithName:[RPEnemyCharacter getNodeName]];
+    [self findTargetWithName:[RPFriendCharacter getNodeName]];
+    [self findTargetWithName:[RPFriendHero getNodeName]];
 }
 
 

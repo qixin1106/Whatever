@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@import SpriteKit;
 @class RPCharacter;
 @interface RPComFunction : NSObject
 + (CGFloat)getDistanceWithYourPosition:(CGPoint)your
@@ -19,4 +19,6 @@
 + (CGFloat)getCurAtkDamageWithMax:(CGFloat)maxAtk Min:(CGFloat)minAtk;
 
 + (BOOL)isHpSafe:(RPCharacter*)character;
+
++ (SKEmitterNode*)getCustomParticleWithName:(NSString*)particleName;
 @end

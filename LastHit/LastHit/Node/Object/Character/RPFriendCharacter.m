@@ -9,7 +9,7 @@
 #import "RPFriendCharacter.h"
 #import "RPEnemyCharacter.h"
 #import "RPHpBarNode.h"
-
+#import "RPEnemyTower.h"
 @implementation RPFriendCharacter
 
 + (NSString*)getNodeName
@@ -52,7 +52,7 @@
     if (!self.hpBarNode)
     {
         //血条
-        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend];
+        self.hpBarNode = [[RPHpBarNode alloc] initWithCamp:Camp_Friend width:self.size.width];
         [self.scene addChild:self.hpBarNode];
     }
     self.hpBarNode.position = CGPointMake(self.position.x-self.size.width*0.5,
@@ -60,6 +60,7 @@
 
     [super update:currentTime];
     [self findTargetWithName:[RPEnemyCharacter getNodeName]];
+    [self findTargetWithName:[RPEnemyTower getNodeName]];
 }
 
 

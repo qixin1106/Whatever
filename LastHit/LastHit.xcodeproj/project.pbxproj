@@ -13,6 +13,7 @@
 		9921F42419839629003F7806 /* et.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F42019839629003F7806 /* et.png */; };
 		9921F42519839629003F7806 /* fbase.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F42119839629003F7806 /* fbase.png */; };
 		9921F42619839629003F7806 /* ft.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F42219839629003F7806 /* ft.png */; };
+		9921F42919839A4B003F7806 /* RPEnemyTower.m in Sources */ = {isa = PBXBuildFile; fileRef = 9921F42819839A4B003F7806 /* RPEnemyTower.m */; };
 		9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959D1AC1981470D0054FEDB /* RPHpBarNode.m */; };
 		9974BBDB198174140073C213 /* RPMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9974BBDA198174140073C213 /* RPMapNode.m */; };
 		9974BBDE198179280073C213 /* RPFriendHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 9974BBDD198179280073C213 /* RPFriendHero.m */; };
@@ -63,6 +64,8 @@
 		9921F42019839629003F7806 /* et.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = et.png; sourceTree = "<group>"; };
 		9921F42119839629003F7806 /* fbase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fbase.png; sourceTree = "<group>"; };
 		9921F42219839629003F7806 /* ft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ft.png; sourceTree = "<group>"; };
+		9921F42719839A4B003F7806 /* RPEnemyTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPEnemyTower.h; sourceTree = "<group>"; };
+		9921F42819839A4B003F7806 /* RPEnemyTower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPEnemyTower.m; sourceTree = "<group>"; };
 		9959D1AB1981470D0054FEDB /* RPHpBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPHpBarNode.h; sourceTree = "<group>"; };
 		9959D1AC1981470D0054FEDB /* RPHpBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPHpBarNode.m; sourceTree = "<group>"; };
 		9959D1AE1981567A0054FEDB /* RPGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGlobal.h; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 				9974BBDD198179280073C213 /* RPFriendHero.m */,
 				9921F41C19838EF5003F7806 /* RPFriendTower.h */,
 				9921F41D19838EF5003F7806 /* RPFriendTower.m */,
+				9921F42719839A4B003F7806 /* RPEnemyTower.h */,
+				9921F42819839A4B003F7806 /* RPEnemyTower.m */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				9974BBDB198174140073C213 /* RPMapNode.m in Sources */,
 				9921F41E19838EF5003F7806 /* RPFriendTower.m in Sources */,
 				9975D654197D57FF005971DE /* main.m in Sources */,
+				9921F42919839A4B003F7806 /* RPEnemyTower.m in Sources */,
 				9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */,
 				D2BD66B7197E08DA00B95A7A /* RPEnemyCharacter.m in Sources */,
 				D2BD66B4197E08B500B95A7A /* RPFriendCharacter.m in Sources */,
