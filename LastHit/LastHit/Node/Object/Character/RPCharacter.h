@@ -35,8 +35,8 @@ typedef enum{
 
 @property (assign, nonatomic) NSInteger gold;//获得金钱
 @property (assign, nonatomic) NSInteger exp;//获得经验
-
-
+@property (assign, nonatomic) NSInteger lv;//等级
+@property (assign, nonatomic) NSInteger power;//能量
 
 @property (assign, nonatomic) States state;
 @property (weak, nonatomic) RPCharacter *target;

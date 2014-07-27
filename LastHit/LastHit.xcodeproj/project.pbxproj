@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99052B821984C6D3000C39A2 /* RPBaseUINode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99052B811984C6D3000C39A2 /* RPBaseUINode.m */; };
 		991A5301197D82AE003160FA /* RPComFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 991A5300197D82AE003160FA /* RPComFunction.m */; };
 		9921F41E19838EF5003F7806 /* RPFriendTower.m in Sources */ = {isa = PBXBuildFile; fileRef = 9921F41D19838EF5003F7806 /* RPFriendTower.m */; };
 		9921F42319839629003F7806 /* ebase.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921F41F19839629003F7806 /* ebase.png */; };
@@ -57,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99052B801984C6D3000C39A2 /* RPBaseUINode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPBaseUINode.h; sourceTree = "<group>"; };
+		99052B811984C6D3000C39A2 /* RPBaseUINode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPBaseUINode.m; sourceTree = "<group>"; };
 		991A52FF197D82AE003160FA /* RPComFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPComFunction.h; sourceTree = "<group>"; };
 		991A5300197D82AE003160FA /* RPComFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPComFunction.m; sourceTree = "<group>"; };
 		9921F41C19838EF5003F7806 /* RPFriendTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPFriendTower.h; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 		99FB8CFD1982D050007A1781 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				99052B801984C6D3000C39A2 /* RPBaseUINode.h */,
+				99052B811984C6D3000C39A2 /* RPBaseUINode.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				9921F41E19838EF5003F7806 /* RPFriendTower.m in Sources */,
 				9975D654197D57FF005971DE /* main.m in Sources */,
 				9921F42919839A4B003F7806 /* RPEnemyTower.m in Sources */,
+				99052B821984C6D3000C39A2 /* RPBaseUINode.m in Sources */,
 				9959D1AD1981470D0054FEDB /* RPHpBarNode.m in Sources */,
 				D2BD66B7197E08DA00B95A7A /* RPEnemyCharacter.m in Sources */,
 				D2BD66B4197E08B500B95A7A /* RPFriendCharacter.m in Sources */,

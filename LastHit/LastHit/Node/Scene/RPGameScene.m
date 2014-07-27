@@ -14,6 +14,13 @@
 #import "RPFriendTower.h"
 #import "RPEnemyTower.h"
 
+@interface RPGameScene ()
+@property (strong, nonatomic) SKLabelNode *goldText;
+@property (strong, nonatomic) SKLabelNode *lvText;
+@property (strong, nonatomic) SKLabelNode *expText;
+@property (strong, nonatomic) SKLabelNode *powerText;
+@end
+
 @implementation RPGameScene
 
 int rand()
@@ -54,7 +61,7 @@ int rand()
         [self addChild:map];
 
         //造兵
-        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(creatSoldier) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:35 target:self selector:@selector(creatSoldier) userInfo:nil repeats:YES];
         [self creatSoldier];
         
         //造塔
@@ -71,16 +78,51 @@ int rand()
         
         
         //UI
-        SKLabelNode *gold = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
-        gold.zPosition = UI_LAYER;
-        gold.text = @"Gold 0";
-        gold.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-        gold.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
-        gold.position = CGPointMake(0, SCREEN_HEIGHT);
-        gold.fontSize = 17.0;
-        gold.fontColor = [SKColor whiteColor];
-        [self addChild:gold];
+        self.lvText = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        self.lvText.zPosition = UI_LAYER;
+        self.lvText.text = @"Level:1";
+        self.lvText.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        self.lvText.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+        self.lvText.position = CGPointMake(0, SCREEN_HEIGHT);
+        self.lvText.fontSize = 17.0;
+        self.lvText.fontColor = [SKColor whiteColor];
+        [self addChild:self.lvText];
         
+        self.expText = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        self.expText.zPosition = UI_LAYER;
+        self.expText.text = @"Exp:0";
+        self.expText.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        self.expText.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+        self.expText.position = CGPointMake(0, SCREEN_HEIGHT-20);
+        self.expText.fontSize = 17.0;
+        self.expText.fontColor = [SKColor whiteColor];
+        [self addChild:self.expText];
+
+        
+        self.goldText = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        self.goldText.zPosition = UI_LAYER;
+        self.goldText.text = @"Gold:0";
+        self.goldText.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        self.goldText.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+        self.goldText.position = CGPointMake(0, SCREEN_HEIGHT-40);
+        self.goldText.fontSize = 17.0;
+        self.goldText.fontColor = [SKColor whiteColor];
+        [self addChild:self.goldText];
+
+
+        self.powerText = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        self.powerText.zPosition = UI_LAYER;
+        self.powerText.text = @"Power:0";
+        self.powerText.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        self.powerText.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+        self.powerText.position = CGPointMake(0, SCREEN_HEIGHT-60);
+        self.powerText.fontSize = 17.0;
+        self.powerText.fontColor = [SKColor whiteColor];
+        [self addChild:self.powerText];
+        
+        
+
+
     }
     return self;
 }
@@ -127,6 +169,16 @@ int rand()
         RPCharacter *character = (RPCharacter*)node;
         [character update:currentTime];
     }];
+}
+
+
+#pragma mark - change Gold
+- (void)refreshUIWithCharacter:(RPCharacter*)character
+{
+    self.lvText.text = [NSString stringWithFormat:@"Level:%ld",(long)character.lv];
+    self.expText.text = [NSString stringWithFormat:@"Exp:%ld",(long)character.exp];
+    self.goldText.text = [NSString stringWithFormat:@"Gold:%ld",(long)character.gold];
+    self.powerText.text = [NSString stringWithFormat:@"Power:%ld/3",(long)character.power];
 }
 
 @end

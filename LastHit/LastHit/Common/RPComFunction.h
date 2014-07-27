@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @import SpriteKit;
 @class RPCharacter;
+@class RPFriendHero;
 @class RPGameScene;
 @interface RPComFunction : NSObject
 + (CGFloat)getDistanceWithYourPosition:(CGPoint)your
@@ -24,4 +25,8 @@
 + (SKEmitterNode*)getParticleWithName:(NSString*)particleName;
 
 + (RPCharacter*)getCharacterWithPoint:(CGPoint)point scene:(RPGameScene*)scene;
+
++ (RPFriendHero*)getHeroWithScene:(SKScene*)scene;
+
++ (NSInteger)getCharacterLevelWithExp:(NSInteger)exp;
 @end

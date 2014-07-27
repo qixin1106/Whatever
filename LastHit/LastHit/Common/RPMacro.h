@@ -32,6 +32,8 @@
 
 #define VIEW_RANGE 2000
 
+#define POWERMAX 3
+
 /******************************************************************************/
 
 #define FRIEND_SOLDIER_NAME @"FRIEND_SOLDIER_NAME"

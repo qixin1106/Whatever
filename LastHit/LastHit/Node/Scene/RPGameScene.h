@@ -9,5 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface RPGameScene : SKScene
-
+- (void)refreshUIWithCharacter:(RPCharacter*)character;
 @end

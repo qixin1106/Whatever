@@ -8,6 +8,7 @@
 
 #import "RPComFunction.h"
 #import "RPCharacter.h"
+#import "RPFriendHero.h"
 #import "RPGameScene.h"
 #import "RPEnemyCharacter.h"
 #import "RPEnemyTower.h"
@@ -66,6 +67,31 @@
         }
     }];
     return character;
+}
+
++ (RPFriendHero*)getHeroWithScene:(RPGameScene*)scene
+{
+    RPFriendHero *hero = (RPFriendHero*)[scene childNodeWithName:FRIEND_HERO_NAME];
+    return hero;
+}
+
++ (NSInteger)getCharacterLevelWithExp:(NSInteger)exp
+{
+    NSArray *lvNeedExp = @[@0,@3,@6,@12,@24,@48];
+    for (int i = 0; i<lvNeedExp.count; i++)
+    {
+        if (i<lvNeedExp.count-1 &&
+            exp>=[lvNeedExp[i] integerValue] &&
+            exp<[lvNeedExp[i+1] integerValue])
+        {
+            return i+1;
+        }
+        if (i==lvNeedExp.count-1)
+        {
+            return i+1;
+        }
+    }
+    return 0;
 }
 
 @end

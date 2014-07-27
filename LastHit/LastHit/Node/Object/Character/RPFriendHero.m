@@ -29,6 +29,10 @@
         self.state = States_Find;
         self.lastTime = 0;
         
+        self.lv = 1;//等级
+        self.gold = 0;//金币
+        self.exp = 0;//经验
+        self.power = 0;//能量
         self.atkInterval = 1.0;//攻击间隔
         self.viewRange = VIEW_RANGE;//视野
         self.atkRange = 150;//攻击距离

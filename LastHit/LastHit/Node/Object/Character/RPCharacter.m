@@ -11,6 +11,9 @@
 #import "RPFriendHero.h"
 #import "RPFriendTower.h"
 #import "RPEnemyTower.h"
+#import "RPGameScene.h"
+#import "RPEnemyCharacter.h"
+#import "RPEnemyTower.h"
 @interface RPCharacter ()
 @end
 
@@ -275,9 +278,26 @@
             
             //这里逻辑可以抽出
             //get gold
-            if ([sender isKindOfClass:[RPFriendHero class]])
+            if ([self isKindOfClass:[RPEnemyCharacter class]] &&
+                self.scene &&
+                [self.scene isKindOfClass:[RPGameScene class]])
+            {
+                RPFriendHero *hero = [RPComFunction getHeroWithScene:(RPGameScene*)self.scene];
+                RPGameScene *scene = (RPGameScene*)self.scene;
+                hero.exp += 1;
+                hero.lv = [RPComFunction getCharacterLevelWithExp:hero.exp];
+                [scene refreshUIWithCharacter:hero];
+            }
+            if ([sender isKindOfClass:[RPFriendHero class]] &&
+                self.scene &&
+                [self.scene isKindOfClass:[RPGameScene class]])
             {
                 NSLog(@"[%@]谁叫你站着不动,呆瓜",sender.nickname);
+                
+                RPGameScene *scene = (RPGameScene*)self.scene;
+                sender.gold += 1;
+                sender.power = (sender.power<3)?sender.power+1:sender.power;
+                [scene refreshUIWithCharacter:sender];
             }
             if ([self isKindOfClass:[RPFriendHero class]])
             {
