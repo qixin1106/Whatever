@@ -71,7 +71,7 @@
     if (self.state == States_Atk && self.target)
     {
         //override attack effect here...
-        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(10, 10)];
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(3, 3)];
         bullet.zPosition = BULLET_LAYER;
         bullet.position = self.position;
         [self.parent addChild:bullet];

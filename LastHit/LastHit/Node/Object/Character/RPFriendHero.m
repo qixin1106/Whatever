@@ -35,8 +35,8 @@
         self.power = 0;//能量
         self.atkInterval = 1.0;//攻击间隔
         self.viewRange = VIEW_RANGE;//视野
-        self.atkRange = 150;//攻击距离
-        self.moveSpeed = 60;//移动速度
+        self.atkRange = 100;//攻击距离
+        self.moveSpeed = 30;//移动速度
         self.maxHp = 550;//最大血量
         self.curHp = self.maxHp;//当前血量
         self.maxAtk = 50;//最大攻击
@@ -60,8 +60,8 @@
 
 
     [super update:currentTime];
-    [self findTargetWithName:[RPEnemyCharacter getNodeName]];
-    [self findTargetWithName:[RPEnemyTower getNodeName]];
+//    [self findTargetWithName:[RPEnemyCharacter getNodeName]];
+//    [self findTargetWithName:[RPEnemyTower getNodeName]];
 }
 
 
@@ -72,7 +72,7 @@
     if (self.state == States_Atk && self.target)
     {
         //override attack effect here...
-        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(10, 10)];
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(3, 3)];
         bullet.zPosition = BULLET_LAYER;
         bullet.position = self.position;
         [self.parent addChild:bullet];

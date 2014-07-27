@@ -296,7 +296,7 @@
                 
                 RPGameScene *scene = (RPGameScene*)self.scene;
                 sender.gold += 1;
-                sender.power = (sender.power<3)?sender.power+1:sender.power;
+                sender.power = (sender.power<POWERMAX)?sender.power+1:sender.power;
                 [scene refreshUIWithCharacter:sender];
             }
             if ([self isKindOfClass:[RPFriendHero class]])

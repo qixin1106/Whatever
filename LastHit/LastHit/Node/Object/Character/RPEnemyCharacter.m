@@ -72,7 +72,7 @@
     if (self.state == States_Atk && self.target)
     {
         //atk animation
-        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(10, 10)];
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(3, 3)];
         bullet.zPosition = BULLET_LAYER;
         bullet.position = self.position;
         [self.parent addChild:bullet];
