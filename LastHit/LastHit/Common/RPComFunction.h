@@ -29,4 +29,6 @@
 + (RPFriendHero*)getHeroWithScene:(SKScene*)scene;
 
 + (NSInteger)getCharacterLevelWithExp:(NSInteger)exp;
+
++ (void)changePropertyWithLevel:(NSInteger)lv hero:(RPFriendHero*)hero;
 @end

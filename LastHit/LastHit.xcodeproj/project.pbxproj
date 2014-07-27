@@ -36,6 +36,7 @@
 		9975D68C197D5A54005971DE /* RPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D686197D5A54005971DE /* RPAppDelegate.m */; };
 		9975D68D197D5A54005971DE /* RPRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D688197D5A54005971DE /* RPRootVC.m */; };
 		9975D695197D5B79005971DE /* RPStartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9975D694197D5B79005971DE /* RPStartScene.m */; };
+		99798AF919855AEF005B20F9 /* RPEnemyHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 99798AF819855AEF005B20F9 /* RPEnemyHero.m */; };
 		D22E47FF198211C500AF72B0 /* RPBaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = D22E47FE198211C500AF72B0 /* RPBaseEffect.m */; };
 		D26EB10E19822688008E9D86 /* Rocket.sks in Resources */ = {isa = PBXBuildFile; fileRef = D26EB10C19822688008E9D86 /* Rocket.sks */; };
 		D26EB10F19822688008E9D86 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D26EB10D19822688008E9D86 /* spark.png */; };
@@ -103,6 +104,8 @@
 		9975D694197D5B79005971DE /* RPStartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPStartScene.m; sourceTree = "<group>"; };
 		9975D697197D5BDF005971DE /* RPMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPMacro.h; sourceTree = "<group>"; };
 		9975D698197D5C0C005971DE /* RPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPHeader.h; sourceTree = "<group>"; };
+		99798AF719855AEF005B20F9 /* RPEnemyHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPEnemyHero.h; sourceTree = "<group>"; };
+		99798AF819855AEF005B20F9 /* RPEnemyHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPEnemyHero.m; sourceTree = "<group>"; };
 		D22E47FD198211C500AF72B0 /* RPBaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPBaseEffect.h; sourceTree = "<group>"; };
 		D22E47FE198211C500AF72B0 /* RPBaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPBaseEffect.m; sourceTree = "<group>"; };
 		D26EB10C19822688008E9D86 /* Rocket.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rocket.sks; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 				D2BD66B6197E08DA00B95A7A /* RPEnemyCharacter.m */,
 				9974BBDC198179280073C213 /* RPFriendHero.h */,
 				9974BBDD198179280073C213 /* RPFriendHero.m */,
+				99798AF719855AEF005B20F9 /* RPEnemyHero.h */,
+				99798AF819855AEF005B20F9 /* RPEnemyHero.m */,
 				9921F41C19838EF5003F7806 /* RPFriendTower.h */,
 				9921F41D19838EF5003F7806 /* RPFriendTower.m */,
 				9921F42719839A4B003F7806 /* RPEnemyTower.h */,
@@ -476,6 +481,7 @@
 				D22E47FF198211C500AF72B0 /* RPBaseEffect.m in Sources */,
 				991A5301197D82AE003160FA /* RPComFunction.m in Sources */,
 				9974BBDB198174140073C213 /* RPMapNode.m in Sources */,
+				99798AF919855AEF005B20F9 /* RPEnemyHero.m in Sources */,
 				9921F41E19838EF5003F7806 /* RPFriendTower.m in Sources */,
 				9975D654197D57FF005971DE /* main.m in Sources */,
 				9921F42919839A4B003F7806 /* RPEnemyTower.m in Sources */,

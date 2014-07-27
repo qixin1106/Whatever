@@ -9,7 +9,7 @@
 #import "RPFriendTower.h"
 #import "RPHpBarNode.h"
 #import "RPEnemyCharacter.h"
-
+#import "RPEnemyHero.h"
 @implementation RPFriendTower
 
 + (NSString*)getNodeName
@@ -57,6 +57,8 @@
     
     [super update:currentTime];
     [self findTargetWithName:[RPEnemyCharacter getNodeName]];
+    [self findTargetWithName:[RPEnemyHero getNodeName]];
+
 }
 
 

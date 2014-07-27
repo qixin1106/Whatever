@@ -13,6 +13,7 @@
 #import "RPMapNode.h"
 #import "RPFriendTower.h"
 #import "RPEnemyTower.h"
+#import "RPEnemyHero.h"
 
 @interface RPGameScene ()
 @property (strong, nonatomic) SKLabelNode *goldText;
@@ -78,6 +79,9 @@ int rand()
         RPFriendHero *fHero = [[RPFriendHero alloc] initWithFrame:CGRectMake(160, 50, 25, 25)];
         [self addChild:fHero];
 
+        RPEnemyHero *eHero = [[RPEnemyHero alloc] initWithFrame:CGRectMake(160, SCREEN_HEIGHT-50, 25, 25)];
+        [self addChild:eHero];
+
         
         
         //UI
@@ -101,7 +105,6 @@ int rand()
         self.expText.fontColor = [SKColor whiteColor];
         [self addChild:self.expText];
 
-        
         self.goldText = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.goldText.zPosition = UI_LAYER;
         self.goldText.text = @"Gold:0";
@@ -112,7 +115,6 @@ int rand()
         self.goldText.fontColor = [SKColor whiteColor];
         [self addChild:self.goldText];
 
-
         self.powerText = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.powerText.zPosition = UI_LAYER;
         self.powerText.text = @"Power:0";
@@ -122,10 +124,6 @@ int rand()
         self.powerText.fontSize = 17.0;
         self.powerText.fontColor = [SKColor whiteColor];
         [self addChild:self.powerText];
-        
-        
-
-
     }
     return self;
 }
@@ -172,6 +170,11 @@ int rand()
         RPCharacter *character = (RPCharacter*)node;
         [character update:currentTime];
     }];
+    [self enumerateChildNodesWithName:ENEMY_HERO_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+        RPCharacter *character = (RPCharacter*)node;
+        [character update:currentTime];
+    }];
+
 }
 
 

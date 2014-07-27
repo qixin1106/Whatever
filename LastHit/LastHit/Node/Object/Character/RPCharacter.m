@@ -277,7 +277,7 @@
         {
             
             //这里逻辑可以抽出
-            //get gold
+            //获得经验
             if ([self isKindOfClass:[RPEnemyCharacter class]] &&
                 self.scene &&
                 [self.scene isKindOfClass:[RPGameScene class]])
@@ -286,8 +286,10 @@
                 RPGameScene *scene = (RPGameScene*)self.scene;
                 hero.exp += 1;
                 hero.lv = [RPComFunction getCharacterLevelWithExp:hero.exp];
+                [RPComFunction changePropertyWithLevel:hero.lv hero:hero];
                 [scene refreshUIWithCharacter:hero];
             }
+            //英雄击杀
             if ([sender isKindOfClass:[RPFriendHero class]] &&
                 self.scene &&
                 [self.scene isKindOfClass:[RPGameScene class]])
