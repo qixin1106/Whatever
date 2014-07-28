@@ -61,8 +61,8 @@
     
     
     [super update:currentTime];
-    [self findTargetWithName:[RPFriendHero getNodeName]];
     [self findTargetWithName:[RPFriendCharacter getNodeName]];
+    [self findTargetWithName:[RPFriendHero getNodeName]];
     [self findTargetWithName:[RPFriendTower getNodeName]];
 }
 
