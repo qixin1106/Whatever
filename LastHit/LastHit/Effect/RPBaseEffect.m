@@ -32,7 +32,16 @@
 {
     if (self.toTarget)
     {
-        
+        CGFloat distance = [RPComFunction getDistanceWithYourPosition:self.position
+                                                       targetPosition:self.toTarget.position];
+        self.zRotation = [RPComFunction getRadianWithYourPosition:self.position
+                                                   targetPosition:self.toTarget.position];
+        SKAction *run = [SKAction moveTo:self.toTarget.position duration:distance/self.moveSpeed];
+        [self runAction:run];
+        if (distance==0)
+        {
+            
+        }
     }
 }
 @end
