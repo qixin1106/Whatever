@@ -45,15 +45,12 @@ int rand()
     //enemy
     RPEnemyCharacter *enemy = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-50+rand(), SCREEN_HEIGHT-100+rand(), 25, 25)];
     [self addChild:enemy];
-    enemy.target = [RPComFunction getHeroWithScene:self];
 
     RPEnemyCharacter *enemy2 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-100+rand(), SCREEN_HEIGHT-100+rand(), 25, 25)];
     [self addChild:enemy2];
-    enemy2.target = [RPComFunction getHeroWithScene:self];
 
     RPEnemyCharacter *enemy3 = [[RPEnemyCharacter alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-150+rand(), SCREEN_HEIGHT-100+rand(), 25, 25)];
     [self addChild:enemy3];
-    enemy3.target = [RPComFunction getHeroWithScene:self];
 
 }
 

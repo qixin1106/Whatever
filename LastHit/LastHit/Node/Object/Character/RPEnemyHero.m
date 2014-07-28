@@ -38,11 +38,14 @@
         self.viewRange = VIEW_RANGE;//视野
         self.atkRange = 100;//攻击距离
         self.moveSpeed = 30;//移动速度
-        self.maxHp = 550;//最大血量
+        self.maxHp = 1200;//最大血量
         self.curHp = self.maxHp;//当前血量
-        self.maxAtk = 50;//最大攻击
-        self.minAtk = 49;//最小攻击
+        self.maxAtk = 80;//最大攻击
+        self.minAtk = 70;//最小攻击
         self.armor = 2;//护甲(暂时没用)
+//        [self showViewRangeLine];
+//        [self showAtkRangeLine];
+
     }
     return self;
 }

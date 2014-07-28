@@ -43,6 +43,10 @@
         self.maxAtk = 50;//最大攻击
         self.minAtk = 49;//最小攻击
         self.armor = 2;//护甲(暂时没用)
+
+        [self showViewRangeLine];
+        [self showAtkRangeLine];
+
     }
     return self;
 }

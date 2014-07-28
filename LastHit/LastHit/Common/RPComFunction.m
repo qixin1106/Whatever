@@ -109,4 +109,5 @@
     hero.minAtk = hero.minAtk+hero.lv*4;//最小攻击
 }
 
+
 @end
