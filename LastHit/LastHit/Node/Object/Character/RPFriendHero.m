@@ -63,7 +63,6 @@
     self.hpBarNode.position = CGPointMake(self.position.x-self.size.width*0.5,
                                           self.position.y+self.size.height*0.5+5);
 
-
     [super update:currentTime];
     [self findTargetWithName:[RPEnemyHero getNodeName]];
     [self findTargetWithName:[RPEnemyCharacter getNodeName]];

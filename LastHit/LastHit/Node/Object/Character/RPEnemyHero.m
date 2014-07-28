@@ -38,13 +38,15 @@
         self.viewRange = VIEW_RANGE;//视野
         self.atkRange = 100;//攻击距离
         self.moveSpeed = 30;//移动速度
-        self.maxHp = 1200;//最大血量
+        self.maxHp = 550;//最大血量
         self.curHp = self.maxHp;//当前血量
-        self.maxAtk = 80;//最大攻击
-        self.minAtk = 70;//最小攻击
+        self.maxAtk = 60;//最大攻击
+        self.minAtk = 50;//最小攻击
         self.armor = 2;//护甲(暂时没用)
 //        [self showViewRangeLine];
 //        [self showAtkRangeLine];
+        int rand = arc4random()%100-50;
+        [self moveToPoint:CGPointMake(SCREEN_WIDTH*0.5+rand, SCREEN_HEIGHT*0.5+50)];
 
     }
     return self;

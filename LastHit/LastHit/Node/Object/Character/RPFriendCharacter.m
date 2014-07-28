@@ -42,6 +42,8 @@
         self.armor = 2;
 //        [self showViewRangeLine];
 //        [self showAtkRangeLine];
+        int rand = arc4random()%100-50;
+        [self moveToPoint:CGPointMake(SCREEN_WIDTH*0.5+rand, SCREEN_HEIGHT*0.5-50)];
 
     }
     return self;
