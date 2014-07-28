@@ -65,7 +65,7 @@ int rand()
         [self addChild:map];
 
         //造兵
-        [NSTimer scheduledTimerWithTimeInterval:35 target:self selector:@selector(creatSoldier) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(creatSoldier) userInfo:nil repeats:YES];
         [self creatSoldier];
         
         //造塔
@@ -124,6 +124,14 @@ int rand()
         self.powerText.fontSize = 17.0;
         self.powerText.fontColor = [SKColor whiteColor];
         [self addChild:self.powerText];
+
+        //skill button
+        SKSpriteNode *skillButton = [SKSpriteNode spriteNodeWithColor:[SKColor yellowColor]
+                                                                 size:CGSizeMake(30, 30)];
+        skillButton.name = SKILL_BUTTON;
+        skillButton.position = CGPointMake(SCREEN_WIDTH-30, 30);
+        skillButton.anchorPoint = CGPointMake(0, 0);
+        [self addChild:skillButton];
     }
     return self;
 }
@@ -141,6 +149,20 @@ int rand()
     RPCharacter *enemy = [RPComFunction getCharacterWithPoint:point
                                                         scene:self];
     fHero.target = enemy;
+
+
+    //OnClick
+    NSArray *nodes = [self nodesAtPoint:point];
+    [nodes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[SKSpriteNode class]])
+        {
+            SKSpriteNode *node = (SKSpriteNode*)obj;
+            if ([node.name isEqualToString:SKILL_BUTTON])
+            {
+                //onClick Skill Button
+            }
+        }
+    }];
 }
 
 
@@ -182,7 +204,7 @@ int rand()
 - (void)refreshUIWithCharacter:(RPCharacter*)character
 {
     self.lvText.text = [NSString stringWithFormat:@"Level:%ld",(long)character.lv];
-    self.expText.text = [NSString stringWithFormat:@"Exp:%ld",(long)character.exp];
+    self.expText.text = [NSString stringWithFormat:@"Exp:%ld/%d",(long)character.exp,3*character.lv];
     self.goldText.text = [NSString stringWithFormat:@"Gold:%ld",(long)character.gold];
     self.powerText.text = [NSString stringWithFormat:@"Power:%ld/3",(long)character.power];
 }

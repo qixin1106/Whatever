@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+@class RPCharacter;
 @interface RPBaseEffect : SKSpriteNode
-
+@property (assign, nonatomic) CGFloat moveSpeed;
+- (instancetype)initWithFromCharacter:(RPCharacter*)fromNode
+                          toCharacter:(RPCharacter*)toTarget;
+- (void)update:(NSTimeInterval)currentTime;
 @end

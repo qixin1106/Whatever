@@ -44,5 +44,7 @@
 #define ENEMY_HERO_NAME @"ENEMY_HERO_NAME"
 #define ENEMY_TOWER_NAME @"ENEMY_TOWER_NAME"
 
+
+#define SKILL_BUTTON @"SKILL_BUTTON"
 /******************************************************************************/
 
