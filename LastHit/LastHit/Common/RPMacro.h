@@ -30,7 +30,7 @@
 #define HP_BAR_LAYER 1000
 #define UI_LAYER 2000
 
-#define VIEW_RANGE 2000
+#define VIEW_RANGE 200
 
 #define POWERMAX 3
 

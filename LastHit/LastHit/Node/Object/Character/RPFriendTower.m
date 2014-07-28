@@ -56,8 +56,8 @@
     
     
     [super update:currentTime];
-    [self findTargetWithName:[RPEnemyCharacter getNodeName]];
     [self findTargetWithName:[RPEnemyHero getNodeName]];
+    [self findTargetWithName:[RPEnemyCharacter getNodeName]];
 
 }
 
