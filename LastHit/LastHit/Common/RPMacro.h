@@ -33,6 +33,7 @@
 #define VIEW_RANGE 160
 
 #define POWERMAX 3
+#define SKILL_NAME @"SKILL_NAME"
 
 /******************************************************************************/
 

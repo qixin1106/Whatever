@@ -7,9 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+typedef void(^AtkEffectEnd)();
 @class RPCharacter;
 @interface RPBaseEffect : SKSpriteNode
 @property (assign, nonatomic) CGFloat moveSpeed;
+@property (assign, nonatomic) CGFloat skillDamge;
+@property (copy, nonatomic) AtkEffectEnd blk;
 - (instancetype)initWithFromCharacter:(RPCharacter*)fromNode
                           toCharacter:(RPCharacter*)toTarget;
 - (void)update:(NSTimeInterval)currentTime;

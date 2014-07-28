@@ -9,5 +9,5 @@
 #import "RPCharacter.h"
 
 @interface RPFriendHero : RPCharacter
-
+- (void)skillTarget;
 @end

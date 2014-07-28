@@ -14,7 +14,7 @@
 #import "RPFriendTower.h"
 #import "RPEnemyTower.h"
 #import "RPEnemyHero.h"
-
+#import "RPBulletNode.h"
 @interface RPGameScene ()
 @property (strong, nonatomic) SKLabelNode *goldText;
 @property (strong, nonatomic) SKLabelNode *lvText;
@@ -31,14 +31,14 @@ int rand()
 - (void)creatSoldier
 {
     //friend
-    RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(50+rand(), 100+rand(), 25, 25)];
-    [self addChild:friend];
-    
-    RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100+rand(), 100+rand(), 25, 25)];
-    [self addChild:friend2];
-    
-    RPFriendCharacter *friend3 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(150+rand(), 100+rand(), 25, 25)];
-    [self addChild:friend3];
+//    RPFriendCharacter *friend = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(50+rand(), 100+rand(), 25, 25)];
+//    [self addChild:friend];
+//    
+//    RPFriendCharacter *friend2 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(100+rand(), 100+rand(), 25, 25)];
+//    [self addChild:friend2];
+//    
+//    RPFriendCharacter *friend3 = [[RPFriendCharacter alloc] initWithFrame:CGRectMake(150+rand(), 100+rand(), 25, 25)];
+//    [self addChild:friend3];
 
 
     
@@ -144,11 +144,13 @@ int rand()
     //move
     CGPoint point = [[touches anyObject] locationInNode:self];
     RPFriendHero *fHero = (RPFriendHero*)[self childNodeWithName:FRIEND_HERO_NAME];
-    [fHero moveToPoint:point];
     
     RPCharacter *enemy = [RPComFunction getCharacterWithPoint:point
                                                         scene:self];
-    fHero.target = enemy;
+    if (enemy)
+    {
+        fHero.target = enemy;
+    }
 
 
     //OnClick
@@ -160,6 +162,11 @@ int rand()
             if ([node.name isEqualToString:SKILL_BUTTON])
             {
                 //onClick Skill Button
+                [fHero skillTarget];
+            }
+            else
+            {
+                //[fHero moveToPoint:point];
             }
         }
     }];
@@ -195,6 +202,12 @@ int rand()
     [self enumerateChildNodesWithName:ENEMY_HERO_NAME usingBlock:^(SKNode *node, BOOL *stop) {
         RPCharacter *character = (RPCharacter*)node;
         [character update:currentTime];
+    }];
+
+    
+    [self enumerateChildNodesWithName:SKILL_NAME usingBlock:^(SKNode *node, BOOL *stop) {
+        RPBulletNode *bullet = (RPBulletNode*)node;
+        [bullet update:currentTime];
     }];
 
 }

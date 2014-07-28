@@ -11,6 +11,8 @@
 #import "RPEnemyCharacter.h"
 #import "RPEnemyTower.h"
 #import "RPEnemyHero.h"
+#import "RPBulletNode.h"
+
 @implementation RPFriendHero
 
 + (NSString*)getNodeName
@@ -35,8 +37,8 @@
         self.exp = 0;//经验
         self.power = 0;//能量
         self.atkInterval = 1.0;//攻击间隔
-        self.viewRange = VIEW_RANGE;//视野
-        self.atkRange = 100;//攻击距离
+        self.viewRange = 3000;//视野
+        self.atkRange = 200;//攻击距离
         self.moveSpeed = 30;//移动速度
         self.maxHp = 550;//最大血量
         self.curHp = self.maxHp;//当前血量
@@ -77,7 +79,8 @@
     if (self.state == States_Atk && self.target)
     {
         //override attack effect here...
-        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(3, 3)];
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor]
+                                                            size:CGSizeMake(3, 3)];
         bullet.zPosition = BULLET_LAYER;
         bullet.position = self.position;
         [self.parent addChild:bullet];
@@ -88,6 +91,30 @@
             //logic
             CGFloat damage = [RPComFunction getCurAtkDamageWithMax:self.maxAtk
                                                                Min:self.minAtk];
+            [self.target changeCurHp:self.target.curHp-damage byObj:self];
+        }];
+    }
+}
+
+- (void)skillTarget
+{
+    if (self.target)
+    {
+        //override attack effect here...
+        SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(3, 3)];
+        bullet.zPosition = BULLET_LAYER;
+        bullet.position = self.position;
+        [self.parent addChild:bullet];
+        
+        SKEmitterNode *rocketEmitter = [RPComFunction getParticleWithName:@"Rocket"];
+        rocketEmitter.targetNode = self.scene;
+        [bullet addChild:rocketEmitter];
+        
+        SKAction *move = [SKAction moveTo:self.target.position duration:0.25];
+        SKAction *remove = [SKAction removeFromParent];
+        [bullet runAction:[SKAction sequence:@[move,remove]] completion:^{
+            //logic
+            CGFloat damage = 150;
             [self.target changeCurHp:self.target.curHp-damage byObj:self];
         }];
     }
