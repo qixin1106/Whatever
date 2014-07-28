@@ -285,8 +285,11 @@
                 RPFriendHero *hero = [RPComFunction getHeroWithScene:(RPGameScene*)self.scene];
                 RPGameScene *scene = (RPGameScene*)self.scene;
                 hero.exp += 1;
-                hero.lv = [RPComFunction getCharacterLevelWithExp:hero.exp];
-                [RPComFunction changePropertyWithLevel:hero.lv hero:hero];
+                if (hero.lv != [RPComFunction getCharacterLevelWithExp:hero.exp])
+                {
+                    hero.lv = [RPComFunction getCharacterLevelWithExp:hero.exp];
+                    [RPComFunction changePropertyWithLevel:hero.lv hero:hero];
+                }
                 [scene refreshUIWithCharacter:hero];
             }
             //英雄击杀

@@ -39,7 +39,7 @@
         self.curHp = self.maxHp;
         self.maxAtk = 23;
         self.minAtk = 19;
-        self.armor = 2;        
+        self.armor = 2;
     }
     return self;
 }

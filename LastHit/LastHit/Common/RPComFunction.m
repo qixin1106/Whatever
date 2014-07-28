@@ -101,12 +101,12 @@
 + (void)changePropertyWithLevel:(NSInteger)lv hero:(RPFriendHero*)hero
 {
     hero.lv = lv;
-    hero.atkInterval = 1.0-hero.lv/10.0f;
-    hero.atkRange = 100;//攻击距离
-    hero.moveSpeed = 30+hero.lv*2.0;//移动速度
-    hero.maxHp = 550+hero.lv*50;//最大血量
-    hero.maxAtk = 50+hero.lv*5;//最大攻击
-    hero.minAtk = 45+hero.lv*4;//最小攻击
+    hero.atkInterval = hero.atkInterval-0.1;
+    hero.atkRange = hero.atkRange;//攻击距离
+    hero.moveSpeed = hero.moveSpeed+hero.lv*2.0;//移动速度
+    hero.maxHp = hero.maxHp+hero.lv*50;//最大血量
+    hero.maxAtk = hero.maxAtk+hero.lv*5;//最大攻击
+    hero.minAtk = hero.minAtk+hero.lv*4;//最小攻击
 }
 
 @end

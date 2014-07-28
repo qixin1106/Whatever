@@ -40,7 +40,6 @@
         self.maxAtk = 23;
         self.minAtk = 19;
         self.armor = 2;
-        
     }
     return self;
 }
